@@ -1,0 +1,388 @@
+{
+  "_dayjs.min-CxMP4GVf.js": {
+    "file": "assets/dayjs.min-CxMP4GVf.js",
+    "name": "dayjs.min"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-C1HRbxd0.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-PrQ92K9m.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/views/auth/Login.vue",
+      "resources/js/layouts/MainLayout.vue",
+      "resources/js/views/Dashboard.vue",
+      "resources/js/views/leads/LeadsList.vue",
+      "resources/js/views/leads/LeadForm.vue",
+      "resources/js/views/leads/LeadDetails.vue",
+      "resources/js/views/leads/LeadForm.vue",
+      "resources/js/views/site-visits/SiteVisitsList.vue",
+      "resources/js/views/site-visits/SiteVisitForm.vue",
+      "resources/js/views/site-visits/SiteVisitDetails.vue",
+      "resources/js/views/quotations/QuotationsList.vue",
+      "resources/js/views/quotations/QuotationForm.vue",
+      "resources/js/views/quotations/QuotationDetails.vue",
+      "resources/js/views/quotations/QuotationForm.vue",
+      "resources/js/views/projects/ProjectsList.vue",
+      "resources/js/views/projects/ProjectForm.vue",
+      "resources/js/views/projects/ProjectDetails.vue",
+      "resources/js/views/inventory/InventoryList.vue",
+      "resources/js/views/inventory/MaterialForm.vue",
+      "resources/js/views/suppliers/SuppliersList.vue",
+      "resources/js/views/suppliers/SupplierForm.vue",
+      "resources/js/views/suppliers/SupplierDetails.vue",
+      "resources/js/views/suppliers/PurchaseOrdersList.vue",
+      "resources/js/views/contracts/ContractsList.vue",
+      "resources/js/views/contracts/ContractForm.vue",
+      "resources/js/views/contracts/ContractDetails.vue",
+      "resources/js/views/finance/InvoicesList.vue",
+      "resources/js/views/finance/InvoiceForm.vue",
+      "resources/js/views/finance/PaymentsList.vue",
+      "resources/js/views/finance/ExpensesList.vue",
+      "resources/js/views/tasks/TasksList.vue",
+      "resources/js/views/tasks/TaskForm.vue",
+      "resources/js/views/tasks/TaskDetails.vue",
+      "resources/js/views/reports/ReportsIndex.vue",
+      "resources/js/views/users/UsersList.vue",
+      "resources/js/views/Settings.vue",
+      "resources/js/views/NotFound.vue"
+    ]
+  },
+  "resources/js/layouts/MainLayout.vue": {
+    "file": "assets/MainLayout-BSqOHj3d.js",
+    "name": "MainLayout",
+    "src": "resources/js/layouts/MainLayout.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/Dashboard.vue": {
+    "file": "assets/Dashboard-BxdGqbfB.js",
+    "name": "Dashboard",
+    "src": "resources/js/views/Dashboard.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/NotFound.vue": {
+    "file": "assets/NotFound-CsuxMrGF.js",
+    "name": "NotFound",
+    "src": "resources/js/views/NotFound.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/Settings.vue": {
+    "file": "assets/Settings-BH3O7n5Z.js",
+    "name": "Settings",
+    "src": "resources/js/views/Settings.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/auth/Login.vue": {
+    "file": "assets/Login-Ddhqzrl2.js",
+    "name": "Login",
+    "src": "resources/js/views/auth/Login.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/contracts/ContractDetails.vue": {
+    "file": "assets/ContractDetails-L8m19FMX.js",
+    "name": "ContractDetails",
+    "src": "resources/js/views/contracts/ContractDetails.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/contracts/ContractForm.vue": {
+    "file": "assets/ContractForm-vx5UT0et.js",
+    "name": "ContractForm",
+    "src": "resources/js/views/contracts/ContractForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/contracts/ContractsList.vue": {
+    "file": "assets/ContractsList-fJ4C5ZRJ.js",
+    "name": "ContractsList",
+    "src": "resources/js/views/contracts/ContractsList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/finance/ExpensesList.vue": {
+    "file": "assets/ExpensesList-BeUU-Eeg.js",
+    "name": "ExpensesList",
+    "src": "resources/js/views/finance/ExpensesList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/finance/InvoiceForm.vue": {
+    "file": "assets/InvoiceForm-Uq0_YaWH.js",
+    "name": "InvoiceForm",
+    "src": "resources/js/views/finance/InvoiceForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/finance/InvoicesList.vue": {
+    "file": "assets/InvoicesList-DKjMNlEu.js",
+    "name": "InvoicesList",
+    "src": "resources/js/views/finance/InvoicesList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/finance/PaymentsList.vue": {
+    "file": "assets/PaymentsList-5mV4YAMI.js",
+    "name": "PaymentsList",
+    "src": "resources/js/views/finance/PaymentsList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/inventory/InventoryList.vue": {
+    "file": "assets/InventoryList-DVXEtTUo.js",
+    "name": "InventoryList",
+    "src": "resources/js/views/inventory/InventoryList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/inventory/MaterialForm.vue": {
+    "file": "assets/MaterialForm-DLSKLJ0L.js",
+    "name": "MaterialForm",
+    "src": "resources/js/views/inventory/MaterialForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/leads/LeadDetails.vue": {
+    "file": "assets/LeadDetails-CzA_V_LT.js",
+    "name": "LeadDetails",
+    "src": "resources/js/views/leads/LeadDetails.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/leads/LeadForm.vue": {
+    "file": "assets/LeadForm-Cx3rhRQk.js",
+    "name": "LeadForm",
+    "src": "resources/js/views/leads/LeadForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/leads/LeadsList.vue": {
+    "file": "assets/LeadsList-Dcce6dzq.js",
+    "name": "LeadsList",
+    "src": "resources/js/views/leads/LeadsList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/projects/ProjectDetails.vue": {
+    "file": "assets/ProjectDetails-ZQ2-ctWP.js",
+    "name": "ProjectDetails",
+    "src": "resources/js/views/projects/ProjectDetails.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/projects/ProjectForm.vue": {
+    "file": "assets/ProjectForm-BdfYnE2d.js",
+    "name": "ProjectForm",
+    "src": "resources/js/views/projects/ProjectForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/projects/ProjectsList.vue": {
+    "file": "assets/ProjectsList-B2lnVm9j.js",
+    "name": "ProjectsList",
+    "src": "resources/js/views/projects/ProjectsList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/quotations/QuotationDetails.vue": {
+    "file": "assets/QuotationDetails-Bm3TX51Y.js",
+    "name": "QuotationDetails",
+    "src": "resources/js/views/quotations/QuotationDetails.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/quotations/QuotationForm.vue": {
+    "file": "assets/QuotationForm-ke0AW3rY.js",
+    "name": "QuotationForm",
+    "src": "resources/js/views/quotations/QuotationForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/quotations/QuotationsList.vue": {
+    "file": "assets/QuotationsList-BjaS9P1B.js",
+    "name": "QuotationsList",
+    "src": "resources/js/views/quotations/QuotationsList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/reports/ReportsIndex.vue": {
+    "file": "assets/ReportsIndex-DaDUCwIA.js",
+    "name": "ReportsIndex",
+    "src": "resources/js/views/reports/ReportsIndex.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/site-visits/SiteVisitDetails.vue": {
+    "file": "assets/SiteVisitDetails-6hXewJBy.js",
+    "name": "SiteVisitDetails",
+    "src": "resources/js/views/site-visits/SiteVisitDetails.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/site-visits/SiteVisitForm.vue": {
+    "file": "assets/SiteVisitForm-daFN8rC7.js",
+    "name": "SiteVisitForm",
+    "src": "resources/js/views/site-visits/SiteVisitForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/site-visits/SiteVisitsList.vue": {
+    "file": "assets/SiteVisitsList-D2Ex49xJ.js",
+    "name": "SiteVisitsList",
+    "src": "resources/js/views/site-visits/SiteVisitsList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/suppliers/PurchaseOrdersList.vue": {
+    "file": "assets/PurchaseOrdersList-BF6KRiNK.js",
+    "name": "PurchaseOrdersList",
+    "src": "resources/js/views/suppliers/PurchaseOrdersList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/suppliers/SupplierDetails.vue": {
+    "file": "assets/SupplierDetails-BRFN4AXP.js",
+    "name": "SupplierDetails",
+    "src": "resources/js/views/suppliers/SupplierDetails.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/suppliers/SupplierForm.vue": {
+    "file": "assets/SupplierForm-b1j7w3OY.js",
+    "name": "SupplierForm",
+    "src": "resources/js/views/suppliers/SupplierForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/suppliers/SuppliersList.vue": {
+    "file": "assets/SuppliersList-CdbF_IPR.js",
+    "name": "SuppliersList",
+    "src": "resources/js/views/suppliers/SuppliersList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/tasks/TaskDetails.vue": {
+    "file": "assets/TaskDetails-87DSfug4.js",
+    "name": "TaskDetails",
+    "src": "resources/js/views/tasks/TaskDetails.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/tasks/TaskForm.vue": {
+    "file": "assets/TaskForm-DlG7xqCq.js",
+    "name": "TaskForm",
+    "src": "resources/js/views/tasks/TaskForm.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/tasks/TasksList.vue": {
+    "file": "assets/TasksList-C_T8vmV-.js",
+    "name": "TasksList",
+    "src": "resources/js/views/tasks/TasksList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_dayjs.min-CxMP4GVf.js"
+    ]
+  },
+  "resources/js/views/users/UsersList.vue": {
+    "file": "assets/UsersList-BnU8mOaF.js",
+    "name": "UsersList",
+    "src": "resources/js/views/users/UsersList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  }
+}
