@@ -1,24 +1,26 @@
 <template>
-  <div class="space-y-6">
-    <div class="flex items-center justify-between">
-      <div class="flex items-center gap-4">
-        <input v-model="filters.search" type="text" placeholder="بحث..." class="form-input w-64" @input="debouncedFetch" />
-        <select v-model="filters.status" class="form-input w-40" @change="fetchLeads">
-          <option value="">كل الحالات</option>
-          <option value="hot">ساخن</option>
-          <option value="warm">دافئ</option>
-          <option value="cold">بارد</option>
-        </select>
-        <select v-model="filters.source" class="form-input w-40" @change="fetchLeads">
-          <option value="">كل المصادر</option>
-          <option value="whatsapp">واتساب</option>
-          <option value="ads">إعلانات</option>
-          <option value="call">مكالمات</option>
-          <option value="website">موقع</option>
-          <option value="referral">إحالة</option>
-        </select>
+  <div class="space-y-4 lg:space-y-6">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-4">
+        <input v-model="filters.search" type="text" placeholder="بحث..." class="form-input w-full sm:w-48 lg:w-64" @input="debouncedFetch" />
+        <div class="flex gap-2">
+          <select v-model="filters.status" class="form-input flex-1 sm:w-32 lg:w-40" @change="fetchLeads">
+            <option value="">كل الحالات</option>
+            <option value="hot">ساخن</option>
+            <option value="warm">دافئ</option>
+            <option value="cold">بارد</option>
+          </select>
+          <select v-model="filters.source" class="form-input flex-1 sm:w-32 lg:w-40" @change="fetchLeads">
+            <option value="">كل المصادر</option>
+            <option value="whatsapp">واتساب</option>
+            <option value="ads">إعلانات</option>
+            <option value="call">مكالمات</option>
+            <option value="website">موقع</option>
+            <option value="referral">إحالة</option>
+          </select>
+        </div>
       </div>
-      <router-link to="/leads/create" class="btn btn-primary">
+      <router-link to="/leads/create" class="btn btn-primary w-full sm:w-auto">
         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
         </svg>

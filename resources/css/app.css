@@ -96,11 +96,11 @@
     }
     
     .table th {
-        @apply px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider bg-gray-50;
+        @apply px-3 lg:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider bg-gray-50;
     }
     
     .table td {
-        @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+        @apply px-3 lg:px-6 py-3 lg:py-4 whitespace-nowrap text-sm text-gray-900;
     }
     
     .table tbody tr {
@@ -116,14 +116,33 @@
     }
     
     .stat-card {
-        @apply card p-6;
+        @apply card p-4 lg:p-6;
     }
     
     .stat-card .stat-value {
-        @apply text-3xl font-bold text-gray-900;
+        @apply text-xl lg:text-3xl font-bold text-gray-900;
     }
     
     .stat-card .stat-label {
-        @apply text-sm text-gray-500 mt-1;
+        @apply text-xs lg:text-sm text-gray-500 mt-1;
+    }
+
+    .card-header {
+        @apply px-4 lg:px-6 py-3 lg:py-4 border-b border-gray-200;
+    }
+    
+    .card-body {
+        @apply p-4 lg:p-6;
+    }
+
+    /* Mobile responsive utilities */
+    @media (max-width: 640px) {
+        .hide-mobile {
+            display: none !important;
+        }
+        
+        .table td, .table th {
+            font-size: 0.75rem;
+        }
     }
 }

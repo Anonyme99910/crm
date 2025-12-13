@@ -1,9 +1,26 @@
 <template>
   <div class="min-h-screen flex">
+    <!-- Mobile Overlay -->
+    <div 
+      v-if="sidebarOpen" 
+      @click="sidebarOpen = false" 
+      class="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden"
+    ></div>
+
     <!-- Sidebar -->
-    <aside class="w-64 bg-white border-l border-gray-200 fixed h-full overflow-y-auto">
-      <div class="p-4 border-b border-gray-200">
+    <aside 
+      :class="[
+        'w-64 bg-white border-l border-gray-200 fixed h-full overflow-y-auto z-30 transition-transform duration-300',
+        sidebarOpen ? 'translate-x-0' : 'translate-x-full lg:translate-x-0'
+      ]"
+    >
+      <div class="p-4 border-b border-gray-200 flex items-center justify-between">
         <h1 class="text-xl font-bold text-primary-600">CRM التشطيبات</h1>
+        <button @click="sidebarOpen = false" class="lg:hidden p-1 text-gray-500 hover:text-gray-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
       </div>
       
       <nav class="p-4 space-y-1">
@@ -95,22 +112,29 @@
     </aside>
 
     <!-- Main Content -->
-    <div class="flex-1 mr-64">
+    <div class="flex-1 lg:mr-64">
       <!-- Header -->
       <header class="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div class="flex items-center justify-between px-6 py-4">
-          <h2 class="text-lg font-semibold text-gray-800">{{ pageTitle }}</h2>
+        <div class="flex items-center justify-between px-4 lg:px-6 py-4">
+          <!-- Mobile Menu Button -->
+          <button @click="sidebarOpen = true" class="lg:hidden p-2 text-gray-500 hover:text-gray-700">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
           
-          <div class="flex items-center gap-4">
+          <h2 class="text-base lg:text-lg font-semibold text-gray-800">{{ pageTitle }}</h2>
+          
+          <div class="flex items-center gap-2 lg:gap-4">
             <button class="relative p-2 text-gray-500 hover:text-gray-700">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
               </svg>
               <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
             </button>
             
-            <div class="flex items-center gap-3">
-              <div class="text-right">
+            <div class="flex items-center gap-2 lg:gap-3">
+              <div class="text-right hidden sm:block">
                 <p class="text-sm font-medium text-gray-700">{{ authStore.user?.name }}</p>
                 <p class="text-xs text-gray-500">{{ roleLabel }}</p>
               </div>
@@ -125,7 +149,7 @@
       </header>
 
       <!-- Page Content -->
-      <main class="p-6">
+      <main class="p-4 lg:p-6">
         <router-view />
       </main>
     </div>
@@ -133,13 +157,14 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from '../stores/auth';
 
 const route = useRoute();
 const router = useRouter();
 const authStore = useAuthStore();
+const sidebarOpen = ref(false);
 
 const pageTitle = computed(() => {
   const titles = {
