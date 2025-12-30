@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Serve Vite build assets and storage assets from /public
+    RewriteRule ^build/(.*)$ public/build/$1 [L]
+    RewriteRule ^storage/(.*)$ public/storage/$1 [L]
+
+    # Otherwise, route through the app front controller (keeps URI intact for /api/*)
+    RewriteRule ^ index.php [L]
+</IfModule>

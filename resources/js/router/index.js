@@ -2,20 +2,34 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { useAuthStore } from '../stores/auth';
 
 const routes = [
+    // Landing Page Routes (Public)
+    {
+        path: '/',
+        name: 'home',
+        component: () => import('../views/landing/Home.vue'),
+        meta: { public: true }
+    },
+    {
+        path: '/portfolio/:id',
+        name: 'PortfolioDetail',
+        component: () => import('../views/landing/PortfolioDetail.vue'),
+        meta: { public: true }
+    },
+    // Dashboard Login
     {
         path: '/login',
         name: 'login',
         component: () => import('../views/auth/Login.vue'),
         meta: { guest: true }
     },
+    // Dashboard Routes (Protected)
     {
-        path: '/',
+        path: '/dashboard',
         component: () => import('../layouts/MainLayout.vue'),
         meta: { requiresAuth: true },
         children: [
-            { path: '', redirect: '/dashboard' },
-            { path: 'dashboard', name: 'dashboard', component: () => import('../views/Dashboard.vue') },
-            
+            { path: '', name: 'dashboard', component: () => import('../views/Dashboard.vue') },
+                        
             // Leads
             { path: 'leads', name: 'leads', component: () => import('../views/leads/LeadsList.vue') },
             { path: 'leads/create', name: 'leads.create', component: () => import('../views/leads/LeadForm.vue') },
@@ -72,6 +86,14 @@ const routes = [
             
             // Settings
             { path: 'settings', name: 'settings', component: () => import('../views/Settings.vue') },
+            
+            // Landing Page Admin
+            { path: 'landing/sections', name: 'landing.sections', component: () => import('../views/admin/Sections.vue') },
+            { path: 'landing/portfolio', name: 'landing.portfolio', component: () => import('../views/admin/Portfolio.vue') },
+            { path: 'landing/services', name: 'landing.services', component: () => import('../views/admin/Services.vue') },
+            { path: 'landing/testimonials', name: 'landing.testimonials', component: () => import('../views/admin/Testimonials.vue') },
+            { path: 'landing/settings', name: 'landing.settings', component: () => import('../views/admin/Settings.vue') },
+            { path: 'landing/contact-submissions', name: 'landing.contact', component: () => import('../views/admin/ContactSubmissions.vue') },
         ]
     },
     {
@@ -82,7 +104,7 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHistory('/tasks/'),
+    history: createWebHistory('/crm/'),
     routes
 });
 
@@ -93,6 +115,8 @@ router.beforeEach((to, from, next) => {
         next('/login');
     } else if (to.meta.guest && authStore.isAuthenticated) {
         next('/dashboard');
+    } else if (to.meta.public) {
+        next();
     } else {
         next();
     }

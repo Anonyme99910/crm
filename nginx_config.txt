@@ -1,0 +1,50 @@
+server {
+    listen 80;
+    server_name gt-academy.com www.gt-academy.com;
+    return 301 https://gt-academy.com$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name gt-academy.com www.gt-academy.com;
+
+    ssl_certificate /etc/letsencrypt/live/gt-academy.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/gt-academy.com/privkey.pem;
+
+    root /home/gt-academy/htdocs/gt-academy.com;
+    index index.php index.html;
+
+    charset utf-8;
+
+    # CRM (Tasks) Configuration
+    location ^~ /tasks {
+        alias /home/gt-academy/htdocs/gt-academy.com/tasks/public;
+        try_files $uri $uri/ @tasks;
+
+        location ~ \.php$ {
+            include fastcgi_params;
+            fastcgi_pass 127.0.0.1:18001;
+            fastcgi_param SCRIPT_FILENAME $request_filename;
+        }
+    }
+
+    location @tasks {
+        rewrite /tasks/(.*)$ /tasks/index.php?/$1 last;
+    }
+
+    # Main Site Configuration
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass 127.0.0.1:18001;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    location ~ /\.(?!well-known).* {
+        deny all;
+    }
+}

@@ -3,6 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\Landing\SettingController as LandingSettingController;
+use App\Http\Controllers\Api\Landing\SectionController as LandingSectionController;
+use App\Http\Controllers\Api\Landing\PortfolioController as LandingPortfolioController;
+use App\Http\Controllers\Api\Landing\ServiceController as LandingServiceController;
+use App\Http\Controllers\Api\Landing\TestimonialController as LandingTestimonialController;
+use App\Http\Controllers\Api\Landing\ContactController as LandingContactController;
+use App\Http\Controllers\Api\Landing\MediaController as LandingMediaController;
+use App\Http\Controllers\Api\Landing\UploadController as LandingUploadController;
 use App\Http\Controllers\Api\LeadController;
 use App\Http\Controllers\Api\SiteVisitController;
 use App\Http\Controllers\Api\QuotationController;
@@ -173,4 +181,49 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/marketing-campaigns', [BonusModulesController::class, 'marketingCampaigns']);
     Route::post('/marketing-campaigns', [BonusModulesController::class, 'createCampaign']);
     Route::get('/marketing-dashboard', [BonusModulesController::class, 'marketingDashboard']);
+});
+
+// Landing Page Public Routes
+Route::prefix('landing')->group(function () {
+    Route::get('/settings', [LandingSettingController::class, 'index']);
+    Route::get('/sections', [LandingSectionController::class, 'index']);
+    Route::get('/portfolio', [LandingPortfolioController::class, 'index']);
+    Route::get('/portfolio/{portfolio}', [LandingPortfolioController::class, 'show']);
+    Route::get('/testimonials', [LandingTestimonialController::class, 'index']);
+    Route::get('/services', [LandingServiceController::class, 'index']);
+    Route::post('/contact', [LandingContactController::class, 'store']);
+});
+
+// Landing Page Admin Routes (Protected)
+Route::middleware('auth:sanctum')->prefix('landing')->group(function () {
+    Route::post('/upload', [LandingUploadController::class, 'store']);
+    Route::delete('/upload', [LandingUploadController::class, 'destroy']);
+    
+    Route::put('/settings/bulk', [LandingSettingController::class, 'bulkUpdate']);
+    Route::put('/settings/{key}', [LandingSettingController::class, 'update']);
+    
+    Route::post('/sections', [LandingSectionController::class, 'store']);
+    Route::put('/sections/{section}', [LandingSectionController::class, 'update']);
+    Route::delete('/sections/{section}', [LandingSectionController::class, 'destroy']);
+    Route::post('/sections/reorder', [LandingSectionController::class, 'reorder']);
+    
+    Route::post('/portfolio', [LandingPortfolioController::class, 'store']);
+    Route::put('/portfolio/{portfolio}', [LandingPortfolioController::class, 'update']);
+    Route::delete('/portfolio/{portfolio}', [LandingPortfolioController::class, 'destroy']);
+    
+    Route::post('/media', [LandingMediaController::class, 'store']);
+    Route::put('/media/{media}', [LandingMediaController::class, 'update']);
+    Route::delete('/media/{media}', [LandingMediaController::class, 'destroy']);
+    
+    Route::post('/testimonials', [LandingTestimonialController::class, 'store']);
+    Route::put('/testimonials/{testimonial}', [LandingTestimonialController::class, 'update']);
+    Route::delete('/testimonials/{testimonial}', [LandingTestimonialController::class, 'destroy']);
+    
+    Route::post('/services', [LandingServiceController::class, 'store']);
+    Route::put('/services/{service}', [LandingServiceController::class, 'update']);
+    Route::delete('/services/{service}', [LandingServiceController::class, 'destroy']);
+    
+    Route::get('/contact-submissions', [LandingContactController::class, 'index']);
+    Route::put('/contact-submissions/{id}/read', [LandingContactController::class, 'markAsRead']);
+    Route::delete('/contact-submissions/{id}', [LandingContactController::class, 'destroy']);
 });
