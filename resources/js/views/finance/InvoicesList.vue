@@ -15,7 +15,7 @@
           <span class="text-sm">المتأخرة فقط</span>
         </label>
       </div>
-      <router-link to="/invoices/create" class="btn btn-primary">إنشاء فاتورة</router-link>
+      <router-link :to="{ name: 'invoices.create' }" class="btn btn-primary">إنشاء فاتورة</router-link>
     </div>
 
     <div class="card">

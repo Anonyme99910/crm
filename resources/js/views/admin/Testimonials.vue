@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="flex justify-between items-center mb-8">
-      <h1 class="text-3xl font-bold text-gray-900">Testimonials</h1>
-      <button @click="createNew" class="btn-primary">Add Testimonial</button>
+      <h1 class="text-3xl font-bold text-gray-900">آراء العملاء</h1>
+      <button @click="createNew" class="btn-primary">إضافة رأي</button>
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -23,7 +23,7 @@
           </div>
           
           <span :class="testimonial.is_active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'" class="px-2 py-1 text-xs rounded-full">
-            {{ testimonial.is_active ? 'Active' : 'Inactive' }}
+            {{ testimonial.is_active ? 'مفعّل' : 'معطّل' }}
           </span>
         </div>
         
@@ -53,40 +53,40 @@
     <div v-if="editing" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div class="p-6 border-b border-gray-200">
-          <h2 class="text-2xl font-bold text-gray-900">{{ editing.id ? 'Edit' : 'Add' }} Testimonial</h2>
+          <h2 class="text-2xl font-bold text-gray-900">{{ editing.id ? 'تعديل' : 'إضافة' }} رأي</h2>
         </div>
         
         <form @submit.prevent="saveTestimonial" class="p-6 space-y-6">
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Client Name *</label>
+            <label class="block text-gray-700 font-medium mb-2">اسم العميل *</label>
             <input v-model="editing.client_name" type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bronze focus:border-transparent outline-none">
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label class="block text-gray-700 font-medium mb-2">Position</label>
+              <label class="block text-gray-700 font-medium mb-2">المنصب</label>
               <input v-model="editing.client_position" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bronze focus:border-transparent outline-none">
             </div>
             
             <div>
-              <label class="block text-gray-700 font-medium mb-2">Company</label>
+              <label class="block text-gray-700 font-medium mb-2">الشركة</label>
               <input v-model="editing.client_company" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bronze focus:border-transparent outline-none">
             </div>
           </div>
           
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Testimonial *</label>
+            <label class="block text-gray-700 font-medium mb-2">نص الرأي *</label>
             <textarea v-model="editing.content" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bronze focus:border-transparent outline-none resize-none"></textarea>
           </div>
           
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Rating</label>
+            <label class="block text-gray-700 font-medium mb-2">التقييم</label>
             <select v-model.number="editing.rating" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bronze focus:border-transparent outline-none">
-              <option :value="5">5 Stars</option>
-              <option :value="4">4 Stars</option>
-              <option :value="3">3 Stars</option>
-              <option :value="2">2 Stars</option>
-              <option :value="1">1 Star</option>
+              <option :value="5">5 نجوم</option>
+              <option :value="4">4 نجوم</option>
+              <option :value="3">3 نجوم</option>
+              <option :value="2">نجمتان</option>
+              <option :value="1">نجمة واحدة</option>
             </select>
           </div>
           
@@ -96,7 +96,7 @@
               <svg class="w-5 h-5 text-bronze" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
               </svg>
-              Client Media
+              وسائط العميل
             </h3>
           </div>
           
@@ -107,7 +107,7 @@
                 <svg class="w-4 h-4 text-bronze" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                 </svg>
-                Client Photo
+                صورة العميل
               </span>
             </label>
             <div class="flex items-center gap-4">
@@ -130,7 +130,7 @@
                     <svg class="w-6 h-6 text-gray-400 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
                     </svg>
-                    <span class="text-sm text-gray-600">Click to upload photo</span>
+                    <span class="text-sm text-gray-600">اضغط لرفع الصورة</span>
                   </span>
                   <input @change="uploadImage" type="file" accept="image/*" class="hidden">
                 </label>
@@ -145,7 +145,7 @@
                 <svg class="w-4 h-4 text-bronze" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
                 </svg>
-                Video Testimonial (Optional)
+                فيديو رأي العميل (اختياري)
               </span>
             </label>
             <div v-if="editing.client_video" class="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 mb-3">
@@ -155,7 +155,7 @@
                 </svg>
               </div>
               <div class="flex-1">
-                <p class="text-sm font-medium text-gray-900">Video uploaded</p>
+                <p class="text-sm font-medium text-gray-900">تم رفع الفيديو</p>
                 <p class="text-xs text-gray-500 truncate">{{ editing.client_video }}</p>
               </div>
               <button @click="removeVideo" type="button" class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors">
@@ -169,8 +169,8 @@
                 <svg class="w-8 h-8 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                 </svg>
-                <span class="text-sm text-gray-600">Click to upload video testimonial</span>
-                <span class="block text-xs text-gray-400 mt-1">MP4, MOV, AVI (Max 50MB)</span>
+                <span class="text-sm text-gray-600">اضغط لرفع فيديو الرأي</span>
+                <span class="block text-xs text-gray-400 mt-1">MP4, MOV, AVI (الحد الأقصى 50MB)</span>
               </span>
               <input @change="uploadVideo" type="file" accept="video/*" class="hidden">
             </label>
@@ -178,12 +178,12 @@
           
           <div class="flex items-center">
             <input v-model="editing.is_active" type="checkbox" class="w-4 h-4 text-bronze border-gray-300 rounded focus:ring-bronze">
-            <label class="ml-2 text-gray-700">Active</label>
+            <label class="ml-2 text-gray-700">مفعّل</label>
           </div>
           
           <div class="flex justify-end space-x-4 pt-4 border-t border-gray-200">
-            <button type="button" @click="editing = null" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">Cancel</button>
-            <button type="submit" class="btn-primary" :disabled="saving">{{ saving ? 'Saving...' : 'Save' }}</button>
+            <button type="button" @click="editing = null" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">إلغاء</button>
+            <button type="submit" class="btn-primary" :disabled="saving">{{ saving ? 'جاري الحفظ...' : 'حفظ' }}</button>
           </div>
         </form>
       </div>
@@ -207,7 +207,7 @@ const loadTestimonials = async () => {
     const response = await axios.get('api/landing/testimonials');
     testimonials.value = response.data;
   } catch (error) {
-    alert('Error loading testimonials');
+    alert('خطأ في تحميل آراء العملاء');
   } finally {
     loading.value = false;
   }
@@ -233,29 +233,29 @@ const saveTestimonial = async () => {
   try {
     if (editing.value.id) {
       await axios.put(`api/landing/testimonials/${editing.value.id}`, editing.value);
-      alert('Testimonial updated');
+      alert('تم تحديث الرأي');
     } else {
       await axios.post('api/landing/testimonials', editing.value);
-      alert('Testimonial created');
+      alert('تم إضافة الرأي');
     }
     editing.value = null;
     await loadTestimonials();
   } catch (error) {
-    alert('Error saving testimonial');
+    alert('خطأ في حفظ الرأي');
   } finally {
     saving.value = false;
   }
 };
 
 const deleteTestimonial = async (testimonial) => {
-  if (!confirm('Are you sure you want to delete this testimonial?')) return;
+  if (!confirm('هل أنت متأكد من حذف هذا الرأي؟')) return;
   
   try {
     await axios.delete(`api/landing/testimonials/${testimonial.id}`);
-    alert('Testimonial deleted');
+    alert('تم حذف الرأي');
     await loadTestimonials();
   } catch (error) {
-    alert('Error deleting testimonial');
+    alert('خطأ في حذف الرأي');
   }
 };
 
@@ -272,9 +272,9 @@ const uploadImage = async (event) => {
       headers: { 'Content-Type': 'multipart/form-data' }
     });
     editing.value.client_image = response.data.path;
-    alert('Image uploaded');
+    alert('تم رفع الصورة');
   } catch (error) {
-    alert('Error uploading image');
+    alert('خطأ في رفع الصورة');
   }
 };
 
@@ -291,9 +291,9 @@ const uploadVideo = async (event) => {
       headers: { 'Content-Type': 'multipart/form-data' }
     });
     editing.value.client_video = response.data.path;
-    alert('Video uploaded');
+    alert('تم رفع الفيديو');
   } catch (error) {
-    alert('Error uploading video');
+    alert('خطأ في رفع الفيديو');
   }
 };
 

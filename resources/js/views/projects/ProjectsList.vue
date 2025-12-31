@@ -11,11 +11,11 @@
           <option value="completed">مكتمل</option>
         </select>
       </div>
-      <router-link to="/projects/create" class="btn btn-primary">إنشاء مشروع</router-link>
+      <router-link :to="{ name: 'projects.create' }" class="btn btn-primary">إنشاء مشروع</router-link>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <router-link v-for="project in projects" :key="project.id" :to="`/projects/${project.id}`" class="card hover:shadow-lg transition-shadow">
+      <router-link v-for="project in projects" :key="project.id" :to="{ name: 'projects.show', params: { id: project.id } }" class="card hover:shadow-lg transition-shadow">
         <div class="card-body">
           <div class="flex items-start justify-between mb-4">
             <div>

@@ -73,7 +73,7 @@
           <button type="submit" :disabled="loading" class="btn btn-primary">
             {{ loading ? 'جاري الحفظ...' : 'حفظ' }}
           </button>
-          <router-link to="/leads" class="btn btn-secondary">إلغاء</router-link>
+          <router-link :to="{ name: 'leads' }" class="btn btn-secondary">إلغاء</router-link>
         </div>
       </form>
     </div>
@@ -125,7 +125,7 @@ const handleSubmit = async () => {
     } else {
       await axios.post('/leads', form);
     }
-    router.push('/leads');
+    router.push({ name: 'leads' });
   } catch (error) {
     alert(error.response?.data?.message || 'حدث خطأ');
   } finally {

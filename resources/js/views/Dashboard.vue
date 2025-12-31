@@ -82,16 +82,16 @@
           <h3 class="font-semibold text-gray-900">إجراءات سريعة</h3>
         </div>
         <div class="card-body space-y-3">
-          <router-link to="/leads/create" class="btn btn-primary w-full">
+          <router-link :to="{ name: 'leads.create' }" class="btn btn-primary w-full">
             إضافة عميل جديد
           </router-link>
-          <router-link to="/site-visits/create" class="btn btn-secondary w-full">
+          <router-link :to="{ name: 'site-visits.create' }" class="btn btn-secondary w-full">
             جدولة معاينة
           </router-link>
-          <router-link to="/quotations/create" class="btn btn-secondary w-full">
+          <router-link :to="{ name: 'quotations.create' }" class="btn btn-secondary w-full">
             إنشاء عرض سعر
           </router-link>
-          <router-link to="/tasks/create" class="btn btn-secondary w-full">
+          <router-link :to="{ name: 'tasks.create' }" class="btn btn-secondary w-full">
             إضافة مهمة
           </router-link>
         </div>
@@ -100,7 +100,7 @@
       <div class="card lg:col-span-2">
         <div class="card-header flex items-center justify-between">
           <h3 class="font-semibold text-gray-900">أحدث العملاء</h3>
-          <router-link to="/leads" class="text-sm text-primary-600 hover:underline">عرض الكل</router-link>
+          <router-link :to="{ name: 'leads' }" class="text-sm text-primary-600 hover:underline">عرض الكل</router-link>
         </div>
         <div class="card-body">
           <div v-if="recentLeads.length === 0" class="text-center text-gray-500 py-8">
@@ -127,7 +127,7 @@
       <div class="card">
         <div class="card-header flex items-center justify-between">
           <h3 class="font-semibold text-gray-900">مهام اليوم</h3>
-          <router-link to="/tasks" class="text-sm text-primary-600 hover:underline">عرض الكل</router-link>
+          <router-link :to="{ name: 'tasks' }" class="text-sm text-primary-600 hover:underline">عرض الكل</router-link>
         </div>
         <div class="card-body">
           <div v-if="todayTasks.length === 0" class="text-center text-gray-500 py-8">
@@ -149,7 +149,7 @@
       <div class="card">
         <div class="card-header flex items-center justify-between">
           <h3 class="font-semibold text-gray-900">معاينات اليوم</h3>
-          <router-link to="/site-visits" class="text-sm text-primary-600 hover:underline">عرض الكل</router-link>
+          <router-link :to="{ name: 'site-visits' }" class="text-sm text-primary-600 hover:underline">عرض الكل</router-link>
         </div>
         <div class="card-body">
           <div v-if="todayVisits.length === 0" class="text-center text-gray-500 py-8">

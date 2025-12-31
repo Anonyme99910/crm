@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="flex justify-between items-center mb-8">
-      <h1 class="text-3xl font-bold text-gray-900">Portfolio</h1>
-      <button @click="createNew" class="btn-primary">Add Portfolio Item</button>
+      <h1 class="text-3xl font-bold text-gray-900">الأعمال</h1>
+      <button @click="createNew" class="btn-primary">إضافة عمل</button>
     </div>
     
     <div class="bg-white rounded-lg shadow overflow-hidden">
@@ -13,11 +13,11 @@
       <table v-else class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
           <tr>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Media</th>
-            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">العنوان</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">التصنيف</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">الحالة</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">الوسائط</th>
+            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">إجراءات</th>
           </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
@@ -30,15 +30,15 @@
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
               <span :class="item.is_active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'" class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">
-                {{ item.is_active ? 'Active' : 'Inactive' }}
+                {{ item.is_active ? 'مفعّل' : 'معطّل' }}
               </span>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-              {{ item.media?.length || 0 }} files
+              {{ item.media?.length || 0 }} ملف
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              <button @click="editItem(item)" class="text-bronze hover:text-bronze-dark mr-4">Edit</button>
-              <button @click="deleteItem(item)" class="text-red-600 hover:text-red-900">Delete</button>
+              <button @click="editItem(item)" class="text-bronze hover:text-bronze-dark mr-4">تعديل</button>
+              <button @click="deleteItem(item)" class="text-red-600 hover:text-red-900">حذف</button>
             </td>
           </tr>
         </tbody>
@@ -48,58 +48,58 @@
     <div v-if="editing" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         <div class="p-6 border-b border-gray-200">
-          <h2 class="text-2xl font-bold text-gray-900">{{ editing.id ? 'Edit' : 'Add' }} Portfolio Item</h2>
+          <h2 class="text-2xl font-bold text-gray-900">{{ editing.id ? 'تعديل' : 'إضافة' }} عمل</h2>
         </div>
         
         <form @submit.prevent="saveItem" class="p-6 space-y-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label class="block text-gray-700 font-medium mb-2">Title *</label>
+              <label class="block text-gray-700 font-medium mb-2">العنوان *</label>
               <input v-model="editing.title" type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bronze focus:border-transparent outline-none">
             </div>
             
             <div>
-              <label class="block text-gray-700 font-medium mb-2">Category</label>
+              <label class="block text-gray-700 font-medium mb-2">التصنيف</label>
               <input v-model="editing.category" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bronze focus:border-transparent outline-none">
             </div>
           </div>
           
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Description</label>
+            <label class="block text-gray-700 font-medium mb-2">الوصف</label>
             <textarea v-model="editing.description" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bronze focus:border-transparent outline-none resize-none"></textarea>
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <label class="block text-gray-700 font-medium mb-2">Client</label>
+              <label class="block text-gray-700 font-medium mb-2">العميل</label>
               <input v-model="editing.client" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bronze focus:border-transparent outline-none">
             </div>
             
             <div>
-              <label class="block text-gray-700 font-medium mb-2">Project Date</label>
+              <label class="block text-gray-700 font-medium mb-2">تاريخ المشروع</label>
               <input v-model="editing.project_date" type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bronze focus:border-transparent outline-none">
             </div>
             
             <div>
-              <label class="block text-gray-700 font-medium mb-2">Location</label>
+              <label class="block text-gray-700 font-medium mb-2">الموقع</label>
               <input v-model="editing.location" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bronze focus:border-transparent outline-none">
             </div>
           </div>
           
           <div>
-            <label class="block text-gray-700 font-medium mb-2">Project Details</label>
+            <label class="block text-gray-700 font-medium mb-2">تفاصيل المشروع</label>
             <textarea v-model="editing.details" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-bronze focus:border-transparent outline-none resize-none"></textarea>
           </div>
           
           <div class="flex items-center space-x-6">
             <label class="flex items-center">
               <input v-model="editing.is_featured" type="checkbox" class="w-4 h-4 text-bronze border-gray-300 rounded focus:ring-bronze">
-              <span class="ml-2 text-gray-700">Featured</span>
+              <span class="ml-2 text-gray-700">مميز</span>
             </label>
             
             <label class="flex items-center">
               <input v-model="editing.is_active" type="checkbox" class="w-4 h-4 text-bronze border-gray-300 rounded focus:ring-bronze">
-              <span class="ml-2 text-gray-700">Active</span>
+              <span class="ml-2 text-gray-700">مفعّل</span>
             </label>
           </div>
           
@@ -110,7 +110,7 @@
                 <svg class="w-5 h-5 text-bronze" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-                Media Files (Images & Videos)
+                ملفات الوسائط (صور وفيديو)
               </span>
             </label>
             
@@ -136,8 +136,8 @@
               <svg class="w-12 h-12 text-gray-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
               </svg>
-              <p class="text-gray-600 mb-2">Drag & drop files here or click to browse</p>
-              <p class="text-sm text-gray-400">Supports: JPG, PNG, GIF, MP4, MOV (Max 50MB)</p>
+              <p class="text-gray-600 mb-2">اسحب الملفات هنا أو اضغط للاختيار</p>
+              <p class="text-sm text-gray-400">المدعوم: JPG, PNG, GIF, MP4, MOV (الحد الأقصى 50MB)</p>
               <input 
                 v-if="editing.id"
                 @change="uploadMedia" 
@@ -150,14 +150,14 @@
                 <svg class="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
                 </svg>
-                Save the portfolio item first, then you can upload media files
+                احفظ العمل أولاً ثم يمكنك رفع ملفات الوسائط
               </p>
             </div>
           </div>
           
           <div class="flex justify-end space-x-4 pt-4 border-t border-gray-200">
-            <button type="button" @click="editing = null" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">Cancel</button>
-            <button type="submit" class="btn-primary" :disabled="saving">{{ saving ? 'Saving...' : 'Save' }}</button>
+            <button type="button" @click="editing = null" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">إلغاء</button>
+            <button type="submit" class="btn-primary" :disabled="saving">{{ saving ? 'جاري الحفظ...' : 'حفظ' }}</button>
           </div>
         </form>
       </div>
@@ -181,7 +181,7 @@ const loadItems = async () => {
     const response = await axios.get('api/landing/portfolio');
     items.value = response.data;
   } catch (error) {
-    alert('Error loading portfolio items');
+    alert('خطأ في تحميل الأعمال');
   } finally {
     loading.value = false;
   }
@@ -211,29 +211,29 @@ const saveItem = async () => {
   try {
     if (editing.value.id) {
       await axios.put(`api/landing/portfolio/${editing.value.id}`, editing.value);
-      alert('Portfolio item updated');
+      alert('تم تحديث العمل');
     } else {
       await axios.post('api/landing/portfolio', editing.value);
-      alert('Portfolio item created');
+      alert('تم إضافة العمل');
     }
     editing.value = null;
     await loadItems();
   } catch (error) {
-    alert('Error saving portfolio item');
+    alert('خطأ في حفظ العمل');
   } finally {
     saving.value = false;
   }
 };
 
 const deleteItem = async (item) => {
-  if (!confirm('Are you sure you want to delete this item?')) return;
+  if (!confirm('هل أنت متأكد من حذف هذا العمل؟')) return;
   
   try {
     await axios.delete(`api/landing/portfolio/${item.id}`);
-    alert('Portfolio item deleted');
+    alert('تم حذف العمل');
     await loadItems();
   } catch (error) {
-    alert('Error deleting portfolio item');
+    alert('خطأ في حذف العمل');
   }
 };
 
@@ -252,24 +252,24 @@ const uploadMedia = async (event) => {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
     } catch (error) {
-      alert(`Error uploading ${file.name}`);
+      alert(`خطأ في رفع الملف: ${file.name}`);
     }
   }
   
-  alert('Media uploaded successfully');
+  alert('تم رفع الملفات بنجاح');
   const response = await axios.get(`api/landing/portfolio/${editing.value.id}`);
   editing.value = response.data;
 };
 
 const deleteMedia = async (media) => {
-  if (!confirm('Delete this media file?')) return;
+  if (!confirm('هل تريد حذف ملف الوسائط هذا؟')) return;
   
   try {
     await axios.delete(`api/landing/media/${media.id}`);
     editing.value.media = editing.value.media.filter(m => m.id !== media.id);
-    alert('Media deleted');
+    alert('تم حذف ملف الوسائط');
   } catch (error) {
-    alert('Error deleting media');
+    alert('خطأ في حذف ملف الوسائط');
   }
 };
 

@@ -20,7 +20,7 @@
           </select>
         </div>
       </div>
-      <router-link to="/leads/create" class="btn btn-primary w-full sm:w-auto">
+      <router-link :to="{ name: 'leads.create' }" class="btn btn-primary w-full sm:w-auto">
         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
         </svg>
@@ -54,8 +54,8 @@
               <td>{{ formatDate(lead.created_at) }}</td>
               <td>
                 <div class="flex items-center gap-2">
-                  <router-link :to="`/leads/${lead.id}`" class="text-primary-600 hover:text-primary-800">عرض</router-link>
-                  <router-link :to="`/leads/${lead.id}/edit`" class="text-gray-600 hover:text-gray-800">تعديل</router-link>
+                  <router-link :to="{ name: 'leads.show', params: { id: lead.id } }" class="text-primary-600 hover:text-primary-800">عرض</router-link>
+                  <router-link :to="{ name: 'leads.edit', params: { id: lead.id } }" class="text-gray-600 hover:text-gray-800">تعديل</router-link>
                 </div>
               </td>
             </tr>
