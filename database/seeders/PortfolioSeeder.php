@@ -119,6 +119,28 @@ class PortfolioSeeder extends Seeder
                     ]
                 );
             }
+
+            // Add video to first portfolio item
+            if ($portfolio->id == 1) {
+                $videoSourcePath = $sourceDir . '/video1.mp4';
+                if (File::exists($videoSourcePath)) {
+                    $videoStoragePath = 'portfolio/' . $portfolio->id . '_video.mp4';
+                    Storage::disk('public')->put($videoStoragePath, File::get($videoSourcePath));
+                    
+                    Media::updateOrCreate(
+                        [
+                            'mediable_id' => $portfolio->id,
+                            'mediable_type' => PortfolioItem::class,
+                            'path' => $videoStoragePath,
+                        ],
+                        [
+                            'type' => 'video',
+                            'title' => $item['title'] . ' - فيديو',
+                            'order' => 2,
+                        ]
+                    );
+                }
+            }
         }
 
         $this->command->info('Portfolio items seeded successfully with images!');
