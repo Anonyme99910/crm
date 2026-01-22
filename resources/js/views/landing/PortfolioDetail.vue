@@ -9,12 +9,12 @@
     <div v-else-if="portfolio" class="pt-20">
       <div class="section-padding bg-gray-50">
         <div class="container-custom">
-          <button @click="$router.push('/')" class="flex items-center text-bronze hover:text-bronze-dark mb-8 transition-colors">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          <a href="/crm/" class="flex items-center text-bronze hover:text-bronze-dark mb-8 transition-colors">
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
-            Back to Home
-          </button>
+            العودة للرئيسية
+          </a>
           
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
             <div>
@@ -76,23 +76,23 @@
               
               <div class="grid grid-cols-2 gap-6 mb-8">
                 <div v-if="portfolio.client">
-                  <h3 class="text-sm font-semibold text-gray-500 mb-2">Client</h3>
+                  <h3 class="text-sm font-semibold text-gray-500 mb-2">العميل</h3>
                   <p class="text-gray-900">{{ portfolio.client }}</p>
                 </div>
                 
                 <div v-if="portfolio.project_date">
-                  <h3 class="text-sm font-semibold text-gray-500 mb-2">Date</h3>
+                  <h3 class="text-sm font-semibold text-gray-500 mb-2">التاريخ</h3>
                   <p class="text-gray-900">{{ formatDate(portfolio.project_date) }}</p>
                 </div>
                 
                 <div v-if="portfolio.location">
-                  <h3 class="text-sm font-semibold text-gray-500 mb-2">Location</h3>
+                  <h3 class="text-sm font-semibold text-gray-500 mb-2">الموقع</h3>
                   <p class="text-gray-900">{{ portfolio.location }}</p>
                 </div>
               </div>
               
               <div v-if="portfolio.details" class="bg-gray-50 p-6 rounded-lg">
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Project Details</h3>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">تفاصيل المشروع</h3>
                 <p class="text-gray-700 whitespace-pre-line">{{ portfolio.details }}</p>
               </div>
             </div>

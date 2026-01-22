@@ -139,7 +139,8 @@ const filteredItems = computed(() => {
 });
 
 const openPortfolio = (item) => {
-  router.push({ name: 'PortfolioDetail', params: { id: item.id } });
+  // Use full page reload (MPA behavior) for better video restart experience
+  window.location.href = `/crm/portfolio/${item.id}`;
 };
 
 const getMediaUrl = (path) => {

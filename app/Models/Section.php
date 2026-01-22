@@ -15,6 +15,7 @@ class Section extends Model
         'subtitle',
         'content',
         'background_image',
+        'background_video',
         'background_color',
         'order',
         'is_active',

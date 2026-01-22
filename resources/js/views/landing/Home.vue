@@ -56,6 +56,10 @@ onMounted(async () => {
 
   if (sectionsRes.status === 'fulfilled') {
     sections.value = sectionsRes.value.data;
+    console.log('Sections loaded:', sections.value);
+    const hero = sections.value.find(s => s.name === 'hero');
+    console.log('Hero section:', hero);
+    console.log('Hero background_video:', hero?.background_video);
   }
 
   if (portfolioRes.status === 'fulfilled') {

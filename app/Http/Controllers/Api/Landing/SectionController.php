@@ -44,6 +44,7 @@ class SectionController extends Controller
             'subtitle' => 'nullable|string',
             'content' => 'nullable|string',
             'background_image' => 'nullable|string',
+            'background_video' => 'nullable|string',
             'background_color' => 'nullable|string',
             'order' => 'nullable|integer',
             'is_active' => 'nullable|boolean',
@@ -52,6 +53,20 @@ class SectionController extends Controller
 
         $section->update($validated);
         return response()->json($section);
+    }
+
+    public function uploadVideo(Request $request)
+    {
+        $request->validate([
+            'video' => 'required|file|mimes:mp4,webm|max:51200',
+            'section_id' => 'required|exists:sections,id',
+        ]);
+
+        $file = $request->file('video');
+        $filename = 'hero_video_' . time() . '.' . $file->getClientOriginalExtension();
+        $path = $file->storeAs('sections', $filename, 'public');
+
+        return response()->json(['path' => $path]);
     }
 
     public function destroy(Section $section)

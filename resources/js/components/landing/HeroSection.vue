@@ -1,13 +1,41 @@
 <template>
   <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden" :style="{ backgroundColor: section.background_color || '#f9ede0' }">
-    <div v-if="section.background_image" class="absolute inset-0 parallax-bg" :style="{ backgroundImage: `url(${section.background_image})` }"></div>
+    <!-- Video Background -->
+    <div v-if="videoSrc" class="absolute inset-0 w-full h-full overflow-hidden">
+      <!-- Loading placeholder while video loads -->
+      <div v-if="!videoLoaded" class="absolute inset-0 bg-gradient-to-br from-bronze/30 to-bronze-dark/20 flex items-center justify-center">
+        <div class="text-center">
+          <div class="w-16 h-16 border-4 border-bronze border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p class="text-bronze-dark text-lg">جاري تحميل الفيديو...</p>
+        </div>
+      </div>
+      <video 
+        ref="heroVideo"
+        class="absolute min-w-full min-h-full w-auto h-auto object-cover transition-opacity duration-500"
+        :class="{ 'opacity-0': !videoLoaded, 'opacity-100': videoLoaded }"
+        style="top: 50%; left: 50%; transform: translate(-50%, -50%);"
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        preload="auto"
+        @loadeddata="onVideoLoaded"
+        @canplay="onVideoCanPlay"
+      >
+        <source :src="videoSrc" type="video/mp4">
+      </video>
+      <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+    
+    <!-- Image Background (fallback) -->
+    <div v-else-if="section.background_image" class="absolute inset-0 parallax-bg" :style="{ backgroundImage: `url(${section.background_image})` }"></div>
     
     <div class="absolute inset-0 bg-gradient-to-br from-bronze/20 to-transparent"></div>
     
-    <!-- Animated background elements -->
-    <div class="absolute top-20 left-10 w-72 h-72 bg-bronze/10 rounded-full blur-3xl animate-float"></div>
-    <div class="absolute bottom-20 right-10 w-96 h-96 bg-bronze-light/10 rounded-full blur-3xl animate-float" style="animation-delay: 1s;"></div>
-    <div class="absolute top-1/3 right-1/4 w-64 h-64 bg-bronze/5 rounded-full blur-2xl animate-pulse" style="animation-delay: 2s;"></div>
+    <!-- Animated background elements (only show when no video) -->
+    <div v-if="!videoSrc" class="absolute top-20 left-10 w-72 h-72 bg-bronze/10 rounded-full blur-3xl animate-float"></div>
+    <div v-if="!videoSrc" class="absolute bottom-20 right-10 w-96 h-96 bg-bronze-light/10 rounded-full blur-3xl animate-float" style="animation-delay: 1s;"></div>
+    <div v-if="!videoSrc" class="absolute top-1/3 right-1/4 w-64 h-64 bg-bronze/5 rounded-full blur-2xl animate-pulse" style="animation-delay: 2s;"></div>
     
     <div class="container-custom px-4 md:px-8 relative z-10">
       <div class="text-center animate-slide-up">
@@ -66,7 +94,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
 const props = defineProps({
   section: {
@@ -79,6 +107,9 @@ const props = defineProps({
   },
 });
 
+const heroVideo = ref(null);
+const videoLoaded = ref(false);
+
 const logoSrc = computed(() => {
   const path = props.settings?.site_logo;
   if (path) {
@@ -86,6 +117,18 @@ const logoSrc = computed(() => {
     return `/crm/storage/${path}`;
   }
   return '/crm/logo.png';
+});
+
+const videoSrc = computed(() => {
+  const path = props.section?.background_video;
+  console.log('Video path from section:', path);
+  if (path) {
+    if (String(path).startsWith('http')) return path;
+    const fullPath = `/crm/storage/${path}`;
+    console.log('Full video URL:', fullPath);
+    return fullPath;
+  }
+  return null;
 });
 
 const isGlowing = ref(false);
@@ -104,6 +147,29 @@ const animateLogo = () => {
   void logo.offsetWidth; // Trigger reflow
   logo.classList.add('animate-scale-in');
 };
+
+const onVideoLoaded = () => {
+  console.log('Video data loaded');
+  if (heroVideo.value) {
+    heroVideo.value.play();
+  }
+};
+
+const onVideoCanPlay = () => {
+  console.log('Video can play');
+  videoLoaded.value = true;
+  if (heroVideo.value) {
+    heroVideo.value.play();
+  }
+};
+
+onMounted(() => {
+  // Ensure video starts from beginning on page load
+  if (heroVideo.value) {
+    heroVideo.value.currentTime = 0;
+    heroVideo.value.play();
+  }
+});
 </script>
 
 <style scoped>

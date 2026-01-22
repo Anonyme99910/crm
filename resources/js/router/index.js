@@ -81,6 +81,28 @@ const routes = [
             // Reports
             { path: 'reports', name: 'reports', component: () => import('../views/reports/ReportsIndex.vue') },
             
+            // Treasury Management
+            { path: 'treasury/accounts', name: 'treasury.accounts', component: () => import('../views/treasury/BankAccountsList.vue') },
+            { path: 'treasury/transfers', name: 'treasury.transfers', component: () => import('../views/treasury/FundTransfersList.vue') },
+            { path: 'treasury/funds', name: 'treasury.funds', component: () => import('../views/treasury/EmployeeFundsList.vue') },
+            
+            // Accounting
+            { path: 'accounting/chart-of-accounts', name: 'accounting.coa', component: () => import('../views/accounting/ChartOfAccountsList.vue') },
+            { path: 'accounting/journal-entries', name: 'accounting.journals', component: () => import('../views/accounting/JournalEntriesList.vue') },
+            { path: 'accounting/reports', name: 'accounting.reports', component: () => import('../views/accounting/FinancialReports.vue') },
+            
+            // Accounts Payable
+            { path: 'payables/bills', name: 'payables.bills', component: () => import('../views/payables/SupplierBillsList.vue') },
+            
+            // Accounts Receivable
+            { path: 'receivables/invoices', name: 'receivables.invoices', component: () => import('../views/receivables/CustomerInvoicesList.vue') },
+            
+            // Approvals
+            { path: 'approvals', name: 'approvals', component: () => import('../views/approvals/ApprovalsList.vue') },
+            
+            // Audit & Security
+            { path: 'audit', name: 'audit', component: () => import('../views/audit/AuditLogsList.vue') },
+            
             // Users
             { path: 'users', name: 'users', component: () => import('../views/users/UsersList.vue') },
             

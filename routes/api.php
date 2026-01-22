@@ -24,6 +24,17 @@ use App\Http\Controllers\Api\CommunicationController;
 use App\Http\Controllers\Api\CustomerPortalController;
 use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\BonusModulesController;
+use App\Http\Controllers\Api\BankAccountController;
+use App\Http\Controllers\Api\FundTransferController;
+use App\Http\Controllers\Api\EmployeeFundController;
+use App\Http\Controllers\Api\ChartOfAccountController;
+use App\Http\Controllers\Api\JournalEntryController;
+use App\Http\Controllers\Api\SupplierBillController;
+use App\Http\Controllers\Api\FinancialReportController;
+use App\Http\Controllers\Api\WhatsappController;
+use App\Http\Controllers\Api\CustomerInvoiceController;
+use App\Http\Controllers\Api\ApprovalWorkflowController;
+use App\Http\Controllers\Api\AuditLogController;
 
 // Public routes
 Route::post('/login', [AuthController::class, 'login']);
@@ -181,6 +192,131 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/marketing-campaigns', [BonusModulesController::class, 'marketingCampaigns']);
     Route::post('/marketing-campaigns', [BonusModulesController::class, 'createCampaign']);
     Route::get('/marketing-dashboard', [BonusModulesController::class, 'marketingDashboard']);
+
+    // Treasury Management
+    Route::prefix('treasury')->group(function () {
+        Route::get('/bank-accounts', [BankAccountController::class, 'index']);
+        Route::post('/bank-accounts', [BankAccountController::class, 'store']);
+        Route::get('/bank-accounts/summary', [BankAccountController::class, 'summary']);
+        Route::get('/bank-accounts/{bankAccount}', [BankAccountController::class, 'show']);
+        Route::put('/bank-accounts/{bankAccount}', [BankAccountController::class, 'update']);
+        Route::delete('/bank-accounts/{bankAccount}', [BankAccountController::class, 'destroy']);
+        Route::get('/bank-accounts/{bankAccount}/transactions', [BankAccountController::class, 'transactions']);
+        Route::post('/bank-accounts/{bankAccount}/deposit', [BankAccountController::class, 'deposit']);
+        Route::post('/bank-accounts/{bankAccount}/withdraw', [BankAccountController::class, 'withdraw']);
+        
+        Route::get('/transfers', [FundTransferController::class, 'index']);
+        Route::post('/transfers', [FundTransferController::class, 'store']);
+        Route::get('/transfers/{fundTransfer}', [FundTransferController::class, 'show']);
+        Route::post('/transfers/{fundTransfer}/approve', [FundTransferController::class, 'approve']);
+        Route::post('/transfers/{fundTransfer}/reject', [FundTransferController::class, 'reject']);
+    });
+
+    // Employee Funds & Advances
+    Route::prefix('funds')->group(function () {
+        Route::get('/', [EmployeeFundController::class, 'index']);
+        Route::post('/', [EmployeeFundController::class, 'store']);
+        Route::get('/summary', [EmployeeFundController::class, 'summary']);
+        Route::get('/{employeeFund}', [EmployeeFundController::class, 'show']);
+        Route::post('/{employeeFund}/approve', [EmployeeFundController::class, 'approve']);
+        Route::post('/{employeeFund}/reject', [EmployeeFundController::class, 'reject']);
+        Route::post('/{employeeFund}/expenses', [EmployeeFundController::class, 'addExpense']);
+        Route::post('/{employeeFund}/settle', [EmployeeFundController::class, 'settle']);
+        Route::post('/expenses/{fundExpense}/approve', [EmployeeFundController::class, 'approveExpense']);
+    });
+
+    // Chart of Accounts & Accounting
+    Route::prefix('accounting')->group(function () {
+        Route::get('/accounts', [ChartOfAccountController::class, 'index']);
+        Route::post('/accounts', [ChartOfAccountController::class, 'store']);
+        Route::get('/accounts/tree', [ChartOfAccountController::class, 'tree']);
+        Route::get('/accounts/trial-balance', [ChartOfAccountController::class, 'trialBalance']);
+        Route::get('/accounts/{chartOfAccount}', [ChartOfAccountController::class, 'show']);
+        Route::put('/accounts/{chartOfAccount}', [ChartOfAccountController::class, 'update']);
+        Route::delete('/accounts/{chartOfAccount}', [ChartOfAccountController::class, 'destroy']);
+        
+        Route::get('/journal-entries', [JournalEntryController::class, 'index']);
+        Route::post('/journal-entries', [JournalEntryController::class, 'store']);
+        Route::get('/journal-entries/{journalEntry}', [JournalEntryController::class, 'show']);
+        Route::put('/journal-entries/{journalEntry}', [JournalEntryController::class, 'update']);
+        Route::delete('/journal-entries/{journalEntry}', [JournalEntryController::class, 'destroy']);
+        Route::post('/journal-entries/{journalEntry}/post', [JournalEntryController::class, 'post']);
+        Route::post('/journal-entries/{journalEntry}/reverse', [JournalEntryController::class, 'reverse']);
+    });
+
+    // Supplier Bills (Accounts Payable)
+    Route::prefix('payables')->group(function () {
+        Route::get('/bills', [SupplierBillController::class, 'index']);
+        Route::post('/bills', [SupplierBillController::class, 'store']);
+        Route::get('/bills/aging', [SupplierBillController::class, 'agingReport']);
+        Route::get('/bills/{supplierBill}', [SupplierBillController::class, 'show']);
+        Route::post('/bills/{supplierBill}/approve', [SupplierBillController::class, 'approve']);
+        Route::post('/bills/{supplierBill}/goods-received', [SupplierBillController::class, 'markGoodsReceived']);
+        Route::post('/bills/{supplierBill}/pay', [SupplierBillController::class, 'makePayment']);
+    });
+
+    // Financial Reports
+    Route::prefix('reports/financial')->group(function () {
+        Route::get('/profit-loss', [FinancialReportController::class, 'profitAndLoss']);
+        Route::get('/balance-sheet', [FinancialReportController::class, 'balanceSheet']);
+        Route::get('/cash-flow', [FinancialReportController::class, 'cashFlowStatement']);
+        Route::get('/project-profitability', [FinancialReportController::class, 'projectProfitability']);
+        Route::get('/executive-dashboard', [FinancialReportController::class, 'executiveDashboard']);
+    });
+
+    // Customer Invoices (Accounts Receivable)
+    Route::prefix('receivables')->group(function () {
+        Route::get('/invoices', [CustomerInvoiceController::class, 'index']);
+        Route::post('/invoices', [CustomerInvoiceController::class, 'store']);
+        Route::get('/invoices/summary', [CustomerInvoiceController::class, 'summary']);
+        Route::get('/invoices/aging', [CustomerInvoiceController::class, 'agingReport']);
+        Route::get('/invoices/{customerInvoice}', [CustomerInvoiceController::class, 'show']);
+        Route::put('/invoices/{customerInvoice}', [CustomerInvoiceController::class, 'update']);
+        Route::delete('/invoices/{customerInvoice}', [CustomerInvoiceController::class, 'destroy']);
+        Route::post('/invoices/{customerInvoice}/approve', [CustomerInvoiceController::class, 'approve']);
+        Route::post('/invoices/{customerInvoice}/send', [CustomerInvoiceController::class, 'send']);
+        Route::post('/invoices/{customerInvoice}/payment', [CustomerInvoiceController::class, 'recordPayment']);
+        Route::post('/payments/{payment}/confirm', [CustomerInvoiceController::class, 'confirmPayment']);
+    });
+
+    // WhatsApp Automation
+    Route::prefix('whatsapp')->group(function () {
+        Route::get('/templates', [WhatsappController::class, 'templates']);
+        Route::post('/templates', [WhatsappController::class, 'storeTemplate']);
+        Route::put('/templates/{template}', [WhatsappController::class, 'updateTemplate']);
+        Route::delete('/templates/{template}', [WhatsappController::class, 'deleteTemplate']);
+        Route::get('/messages', [WhatsappController::class, 'messages']);
+        Route::post('/messages', [WhatsappController::class, 'sendMessage']);
+        Route::post('/messages/bulk', [WhatsappController::class, 'sendBulk']);
+        Route::get('/statistics', [WhatsappController::class, 'statistics']);
+    });
+
+    // Approval Workflows
+    Route::prefix('approvals')->group(function () {
+        Route::get('/workflows', [ApprovalWorkflowController::class, 'workflows']);
+        Route::post('/workflows', [ApprovalWorkflowController::class, 'storeWorkflow']);
+        Route::put('/workflows/{workflow}', [ApprovalWorkflowController::class, 'updateWorkflow']);
+        Route::delete('/workflows/{workflow}', [ApprovalWorkflowController::class, 'deleteWorkflow']);
+        Route::get('/pending', [ApprovalWorkflowController::class, 'pendingApprovals']);
+        Route::get('/my-requests', [ApprovalWorkflowController::class, 'myRequests']);
+        Route::get('/statistics', [ApprovalWorkflowController::class, 'statistics']);
+        Route::post('/request', [ApprovalWorkflowController::class, 'requestApproval']);
+        Route::get('/requests/{approvalRequest}', [ApprovalWorkflowController::class, 'showRequest']);
+        Route::post('/requests/{approvalRequest}/approve', [ApprovalWorkflowController::class, 'approve']);
+        Route::post('/requests/{approvalRequest}/reject', [ApprovalWorkflowController::class, 'reject']);
+    });
+
+    // Audit Logs & Security
+    Route::prefix('audit')->group(function () {
+        Route::get('/logs', [AuditLogController::class, 'index']);
+        Route::get('/logs/{auditLog}', [AuditLogController::class, 'show']);
+        Route::get('/model-history', [AuditLogController::class, 'modelHistory']);
+        Route::get('/user-activity/{userId?}', [AuditLogController::class, 'userActivity']);
+        Route::get('/login-attempts', [AuditLogController::class, 'loginAttempts']);
+        Route::get('/security-dashboard', [AuditLogController::class, 'securityDashboard']);
+        Route::get('/export', [AuditLogController::class, 'exportLogs']);
+        Route::get('/actions', [AuditLogController::class, 'actions']);
+    });
 });
 
 // Landing Page Public Routes
@@ -206,6 +342,7 @@ Route::middleware('auth:sanctum')->prefix('landing')->group(function () {
     Route::put('/sections/{section}', [LandingSectionController::class, 'update']);
     Route::delete('/sections/{section}', [LandingSectionController::class, 'destroy']);
     Route::post('/sections/reorder', [LandingSectionController::class, 'reorder']);
+    Route::post('/sections/upload-video', [LandingSectionController::class, 'uploadVideo']);
     
     Route::post('/portfolio', [LandingPortfolioController::class, 'store']);
     Route::put('/portfolio/{portfolio}', [LandingPortfolioController::class, 'update']);
