@@ -101,6 +101,81 @@
           <span>التقارير</span>
         </router-link>
 
+        <!-- Treasury & Finance Section -->
+        <div class="mt-4 pt-4 border-t border-gray-200">
+          <p class="px-4 text-xs font-semibold text-gray-400 uppercase mb-2">الخزينة والمحاسبة</p>
+          
+          <router-link :to="{ name: 'treasury.accounts' }" class="sidebar-link" active-class="active">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+            </svg>
+            <span>الحسابات البنكية</span>
+          </router-link>
+
+          <router-link :to="{ name: 'treasury.transfers' }" class="sidebar-link" active-class="active">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+            </svg>
+            <span>التحويلات</span>
+          </router-link>
+
+          <router-link :to="{ name: 'treasury.funds' }" class="sidebar-link" active-class="active">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+            <span>العهد والسلف</span>
+          </router-link>
+
+          <router-link :to="{ name: 'payables.bills' }" class="sidebar-link" active-class="active">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z"/>
+            </svg>
+            <span>فواتير الموردين</span>
+          </router-link>
+
+          <router-link :to="{ name: 'receivables.invoices' }" class="sidebar-link" active-class="active">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+            </svg>
+            <span>فواتير العملاء</span>
+          </router-link>
+
+          <router-link :to="{ name: 'accounting.coa' }" class="sidebar-link" active-class="active">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+            </svg>
+            <span>دليل الحسابات</span>
+          </router-link>
+
+          <router-link :to="{ name: 'accounting.journals' }" class="sidebar-link" active-class="active">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+            <span>القيود المحاسبية</span>
+          </router-link>
+
+          <router-link :to="{ name: 'accounting.reports' }" class="sidebar-link" active-class="active">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            <span>التقارير المالية</span>
+          </router-link>
+
+          <router-link :to="{ name: 'approvals' }" class="sidebar-link" active-class="active">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>الاعتمادات</span>
+          </router-link>
+
+          <router-link :to="{ name: 'audit' }" class="sidebar-link" active-class="active">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            <span>سجل المراجعة</span>
+          </router-link>
+        </div>
+
         <router-link v-if="authStore.isAdmin" :to="{ name: 'users' }" class="sidebar-link" active-class="active">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
@@ -229,6 +304,16 @@ const pageTitle = computed(() => {
     'reports': 'التقارير',
     'users': 'المستخدمين',
     'settings': 'الإعدادات',
+    'treasury.accounts': 'الحسابات البنكية',
+    'treasury.transfers': 'التحويلات',
+    'treasury.funds': 'العهد والسلف',
+    'payables.bills': 'فواتير الموردين',
+    'receivables.invoices': 'فواتير العملاء',
+    'accounting.coa': 'دليل الحسابات',
+    'accounting.journals': 'القيود المحاسبية',
+    'accounting.reports': 'التقارير المالية',
+    'approvals': 'الاعتمادات',
+    'audit': 'سجل المراجعة',
     'landing.sections': 'أقسام الصفحة الرئيسية',
     'landing.portfolio': 'إدارة الأعمال',
     'landing.services': 'إدارة الخدمات',
