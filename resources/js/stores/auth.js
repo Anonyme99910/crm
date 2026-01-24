@@ -29,7 +29,7 @@ export const useAuthStore = defineStore('auth', {
         async login(email, password) {
             this.loading = true;
             try {
-                const response = await axios.post('/login', { email, password });
+                const response = await axios.post('/api/login', { email, password });
                 const { user, token } = response.data.data;
                 
                 this.user = user;
@@ -52,7 +52,7 @@ export const useAuthStore = defineStore('auth', {
 
         async logout() {
             try {
-                await axios.post('/logout');
+                await axios.post('/api/logout');
             } catch (e) {
                 // Ignore errors
             }
@@ -66,7 +66,7 @@ export const useAuthStore = defineStore('auth', {
 
         async fetchUser() {
             try {
-                const response = await axios.get('/user');
+                const response = await axios.get('/api/user');
                 this.user = response.data.data;
                 localStorage.setItem('user', JSON.stringify(this.user));
             } catch (error) {
