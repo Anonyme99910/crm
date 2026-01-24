@@ -126,7 +126,7 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHistory('/crm/'),
+    history: createWebHistory('/'),
     routes
 });
 
