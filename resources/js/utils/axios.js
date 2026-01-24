@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: '/crm',
+  baseURL: '',
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
@@ -18,7 +18,7 @@ instance.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem('token');
-      window.location.href = '/crm/login';
+      window.location.href = '/login';
     }
     return Promise.reject(error);
   }
