@@ -9,7 +9,7 @@
     <div v-else-if="portfolio" class="pt-20">
       <div class="section-padding bg-gray-50">
         <div class="container-custom">
-          <a href="/crm/" class="flex items-center text-bronze hover:text-bronze-dark mb-8 transition-colors">
+          <a href="/" class="flex items-center text-bronze hover:text-bronze-dark mb-8 transition-colors">
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
@@ -22,13 +22,13 @@
                 <div class="aspect-[4/3] rounded-lg overflow-hidden shadow-2xl">
                   <img 
                     v-if="currentMedia.type === 'image'"
-                    :src="`/crm/storage/${currentMedia.path}`" 
+                    :src="getMediaUrl(currentMedia.path)" 
                     :alt="portfolio.title"
                     class="w-full h-full object-cover"
                   >
                   <video 
                     v-else
-                    :src="`/crm/storage/${currentMedia.path}`"
+                    :src="getMediaUrl(currentMedia.path)"
                     controls
                     class="w-full h-full object-cover"
                   ></video>
@@ -44,7 +44,7 @@
                   >
                     <img 
                       v-if="media.type === 'image'"
-                      :src="`/crm/storage/${media.path}`" 
+                      :src="getMediaUrl(media.path)" 
                       :alt="portfolio.title"
                       class="w-full h-full object-cover"
                     >
@@ -123,6 +123,12 @@ const currentMedia = computed(() => {
   }
   return null;
 });
+
+const getMediaUrl = (path) => {
+  if (!path) return '';
+  if (path.startsWith('http')) return path;
+  return path.startsWith('/') ? path : `/storage/${path}`;
+};
 
 const formatDate = (date) => {
   return new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' });

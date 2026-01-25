@@ -8,8 +8,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         <!-- Brand -->
         <div class="lg:col-span-1">
-          <a href="/crm/" class="inline-block mb-6">
-            <img src="/crm/logo.png" alt="حازم عبدالله" class="h-20 w-auto hover:scale-105 transition-transform duration-300">
+          <a href="#" class="inline-block mb-6">
+            <img src="/logo.png" alt="حازم عبدالله" class="h-20 w-auto hover:scale-105 transition-transform duration-300">
           </a>
           <p class="text-gray-400 leading-relaxed mb-6">{{ settings.site_description || 'نقدم حلولاً متكاملة للتصميم الداخلي والديكور بأعلى معايير الجودة والإبداع' }}</p>
           

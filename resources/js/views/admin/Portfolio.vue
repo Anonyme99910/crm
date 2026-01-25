@@ -117,7 +117,7 @@
             <!-- Show existing media if editing -->
             <div v-if="editing.id && editing.media && editing.media.length > 0" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
               <div v-for="media in editing.media" :key="media.id" class="relative group">
-                <img v-if="media.type === 'image'" :src="`/crm/storage/${media.path}`" class="w-full h-32 object-cover rounded-lg">
+                <img v-if="media.type === 'image'" :src="media.path.startsWith('/') ? media.path : `/storage/${media.path}`" class="w-full h-32 object-cover rounded-lg">
                 <div v-else class="w-full h-32 bg-gray-900 rounded-lg flex items-center justify-center">
                   <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>

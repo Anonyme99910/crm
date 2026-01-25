@@ -114,9 +114,9 @@ const logoSrc = computed(() => {
   const path = props.settings?.site_logo;
   if (path) {
     if (String(path).startsWith('http')) return path;
-    return `/crm/storage/${path}`;
+    return `/storage/${path}`;
   }
-  return '/crm/logo.png';
+  return '/logo.png';
 });
 
 const videoSrc = computed(() => {
@@ -124,7 +124,7 @@ const videoSrc = computed(() => {
   console.log('Video path from section:', path);
   if (path) {
     if (String(path).startsWith('http')) return path;
-    const fullPath = `/crm/storage/${path}`;
+    const fullPath = path.startsWith('/') ? path : `/storage/${path}`;
     console.log('Full video URL:', fullPath);
     return fullPath;
   }

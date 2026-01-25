@@ -28,7 +28,7 @@
             <div class="flex items-center gap-4">
               <div class="w-20 h-20 rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden border border-gray-200">
                 <img v-if="settings.site_logo" :src="getPublicUrl(settings.site_logo)" alt="شعار الموقع" class="w-full h-full object-contain" />
-                <img v-else src="/crm/logo.png" alt="شعار الموقع" class="w-full h-full object-contain" />
+                <img v-else src="/logo.png" alt="شعار الموقع" class="w-full h-full object-contain" />
               </div>
 
               <div class="flex-1">
@@ -128,7 +128,7 @@ const settings = ref({
 const getPublicUrl = (path) => {
   if (!path) return '';
   if (path.startsWith('http')) return path;
-  return `/crm/storage/${path}`;
+  return path.startsWith('/') ? path : `/storage/${path}`;
 };
 
 const loadSettings = async () => {

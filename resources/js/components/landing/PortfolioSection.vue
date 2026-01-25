@@ -140,14 +140,14 @@ const filteredItems = computed(() => {
 
 const openPortfolio = (item) => {
   // Use full page reload (MPA behavior) for better video restart experience
-  window.location.href = `/crm/portfolio/${item.id}`;
+  window.location.href = `/portfolio/${item.id}`;
 };
 
 const getMediaUrl = (path) => {
   if (!path) return '';
   // Handle both old paths and new storage paths
   if (path.startsWith('http')) return path;
-  return `/crm/storage/${path}`;
+  return path.startsWith('/') ? path : `/storage/${path}`;
 };
 
 const handleImageError = (event) => {

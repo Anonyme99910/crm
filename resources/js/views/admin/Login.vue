@@ -3,7 +3,7 @@
     <div class="max-w-md w-full mx-4">
       <div class="bg-white rounded-2xl shadow-2xl p-8">
         <div class="text-center mb-8">
-          <img src="/crm/Logo Transparent 2.png" alt="Hazem Abdullah" class="h-20 w-auto mx-auto mb-4">
+          <img src="/Logo Transparent 2.png" alt="Hazem Abdullah" class="h-20 w-auto mx-auto mb-4">
           <h2 class="text-3xl font-bold text-gray-900">Admin Login</h2>
           <p class="text-gray-600 mt-2">Sign in to manage your website</p>
         </div>

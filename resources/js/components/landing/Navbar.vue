@@ -3,7 +3,7 @@
     <div class="container-custom px-4 md:px-8">
       <div class="flex items-center justify-between h-20">
         <!-- Logo -->
-        <a href="/crm/" class="flex items-center gap-3 group">
+        <a href="/" class="flex items-center gap-3 group">
           <img :src="logoSrc" alt="حازم عبدالله" class="h-14 w-auto transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-lg">
           <span class="hidden sm:block text-xl font-bold transition-colors duration-300" :class="scrolled ? 'text-bronze' : 'text-white'">
             {{ settings.site_title || 'حازم عبدالله' }}
@@ -83,9 +83,9 @@ const logoSrc = computed(() => {
   const path = props.settings?.site_logo;
   if (path) {
     if (String(path).startsWith('http')) return path;
-    return `/crm/storage/${path}`;
+    return `/storage/${path}`;
   }
-  return '/crm/logo.png';
+  return '/logo.png';
 });
 
 const handleScroll = () => {

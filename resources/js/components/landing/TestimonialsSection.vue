@@ -87,7 +87,7 @@ defineProps({
 const getMediaUrl = (path) => {
   if (!path) return '';
   if (path.startsWith('http')) return path;
-  return `/crm/storage/${path}`;
+  return path.startsWith('/') ? path : `/storage/${path}`;
 };
 
 const handleImageError = (event) => {

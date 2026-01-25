@@ -112,7 +112,7 @@
             </label>
             <div class="flex items-center gap-4">
               <div v-if="editing.client_image" class="relative">
-                <img :src="`/crm/storage/${editing.client_image}`" class="w-24 h-24 rounded-full object-cover border-4 border-bronze shadow-lg">
+                <img :src="editing.client_image.startsWith('/') ? editing.client_image : `/storage/${editing.client_image}`" class="w-24 h-24 rounded-full object-cover border-4 border-bronze shadow-lg">
                 <button @click="removeImage" type="button" class="absolute -top-2 -right-2 bg-red-600 text-white p-1.5 rounded-full shadow-lg hover:bg-red-700 transition-colors">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
