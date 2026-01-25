@@ -4,7 +4,7 @@ import router from './router';
 import App from './App.vue';
 import axios from 'axios';
 
-axios.defaults.baseURL = '/crm/api';
+axios.defaults.baseURL = '/api';
 axios.defaults.headers.common['Accept'] = 'application/json';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
@@ -19,7 +19,7 @@ axios.interceptors.response.use(
         if (error.response?.status === 401) {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
-            window.location.href = '/crm/login';
+            window.location.href = '/login';
         }
         return Promise.reject(error);
     }
