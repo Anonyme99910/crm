@@ -12,7 +12,7 @@
           <option value="rejected">مرفوض</option>
         </select>
       </div>
-      <router-link to="/quotations/create" class="btn btn-primary">إنشاء عرض سعر</router-link>
+      <router-link to="/dashboard/quotations/create" class="btn btn-primary">إنشاء عرض سعر</router-link>
     </div>
 
     <div class="card">
@@ -39,8 +39,8 @@
               <td>{{ formatDate(q.valid_until) }}</td>
               <td>
                 <div class="flex items-center gap-2">
-                  <router-link :to="`/quotations/${q.id}`" class="text-primary-600 hover:text-primary-800">عرض</router-link>
-                  <router-link :to="`/quotations/${q.id}/edit`" class="text-gray-600 hover:text-gray-800">تعديل</router-link>
+                  <router-link :to="`/dashboard/quotations/${q.id}`" class="text-primary-600 hover:text-primary-800">عرض</router-link>
+                  <router-link :to="`/dashboard/quotations/${q.id}/edit`" class="text-gray-600 hover:text-gray-800">تعديل</router-link>
                 </div>
               </td>
             </tr>

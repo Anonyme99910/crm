@@ -324,7 +324,7 @@ const viewDetails = (log) => {
   showDetailsModal.value = true;
 };
 
-const formatDateTime = (date) => date ? new Date(date).toLocaleString('ar-SA') : '';
+const formatDateTime = (date) => date ? new Date(date).toLocaleString('ar-EG') : '';
 
 const getActionLabel = (action) => {
   const labels = { create: 'إنشاء', update: 'تعديل', delete: 'حذف', login: 'تسجيل دخول', logout: 'تسجيل خروج', login_failed: 'فشل دخول', export: 'تصدير', approve: 'اعتماد', reject: 'رفض' };

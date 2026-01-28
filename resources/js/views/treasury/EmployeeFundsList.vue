@@ -346,13 +346,13 @@ const loadFunds = async () => {
 const loadData = async () => {
   try {
     const [usersRes, projectsRes, accountsRes] = await Promise.all([
-      axios.get('/api/users'),
-      axios.get('/api/projects'),
+      axios.get('/api/users?per_page=100'),
+      axios.get('/api/projects?per_page=100'),
       axios.get('/api/treasury/bank-accounts'),
     ]);
-    users.value = usersRes.data;
-    projects.value = projectsRes.data;
-    bankAccounts.value = accountsRes.data;
+    users.value = usersRes.data.data || usersRes.data;
+    projects.value = projectsRes.data.data || projectsRes.data;
+    bankAccounts.value = accountsRes.data.data || accountsRes.data;
   } catch (error) {
     console.error('Error loading data:', error);
   }
@@ -441,7 +441,7 @@ const settleFund = async () => {
 
 const viewFund = (fund) => router.push(`/dashboard/treasury/funds/${fund.id}`);
 
-const formatCurrency = (amount) => new Intl.NumberFormat('ar-SA', { style: 'currency', currency: 'SAR' }).format(amount || 0);
+const formatCurrency = (amount) => new Intl.NumberFormat('ar-EG', { style: 'currency', currency: 'EGP' }).format(amount || 0);
 
 const getTypeLabel = (type) => {
   const labels = { advance: 'سلفة', petty_cash: 'صندوق مصروفات', operation_fund: 'عهدة تشغيلية', travel_allowance: 'بدل سفر' };

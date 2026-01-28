@@ -75,7 +75,7 @@
           <div class="card-header"><h3 class="font-semibold">إجراءات</h3></div>
           <div class="card-body space-y-3">
             <button v-if="contract.status === 'draft'" @click="updateStatus('pending_signature')" class="btn btn-primary w-full">إرسال للتوقيع</button>
-            <router-link :to="`/invoices/create?contract_id=${contract.id}&project_id=${contract.project_id}`" class="btn btn-secondary w-full block text-center">إنشاء فاتورة</router-link>
+            <router-link :to="`/dashboard/invoices/create?contract_id=${contract.id}&project_id=${contract.project_id}`" class="btn btn-secondary w-full block text-center">إنشاء فاتورة</router-link>
           </div>
         </div>
       </div>

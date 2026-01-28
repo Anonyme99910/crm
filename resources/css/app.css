@@ -1,3 +1,4 @@
+/* Cache bust v2 - 2026-01-25 */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
@@ -260,3 +261,6 @@
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+/* Force cache invalidation */
+.cache-bust-v2 { display: none; }

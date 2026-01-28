@@ -83,8 +83,10 @@ const routes = [
             
             // Treasury Management
             { path: 'treasury/accounts', name: 'treasury.accounts', component: () => import('../views/treasury/BankAccountsList.vue') },
+            { path: 'treasury/accounts/:id', name: 'treasury.accounts.show', component: () => import('../views/treasury/BankAccountDetails.vue') },
             { path: 'treasury/transfers', name: 'treasury.transfers', component: () => import('../views/treasury/FundTransfersList.vue') },
             { path: 'treasury/funds', name: 'treasury.funds', component: () => import('../views/treasury/EmployeeFundsList.vue') },
+            { path: 'treasury/funds/:id', name: 'treasury.funds.show', component: () => import('../views/treasury/EmployeeFundDetails.vue') },
             
             // Accounting
             { path: 'accounting/chart-of-accounts', name: 'accounting.coa', component: () => import('../views/accounting/ChartOfAccountsList.vue') },
@@ -93,9 +95,11 @@ const routes = [
             
             // Accounts Payable
             { path: 'payables/bills', name: 'payables.bills', component: () => import('../views/payables/SupplierBillsList.vue') },
+            { path: 'payables/bills/:id', name: 'payables.bills.show', component: () => import('../views/payables/SupplierBillDetails.vue') },
             
             // Accounts Receivable
             { path: 'receivables/invoices', name: 'receivables.invoices', component: () => import('../views/receivables/CustomerInvoicesList.vue') },
+            { path: 'receivables/invoices/:id', name: 'receivables.invoices.show', component: () => import('../views/receivables/CustomerInvoiceDetails.vue') },
             
             // Approvals
             { path: 'approvals', name: 'approvals', component: () => import('../views/approvals/ApprovalsList.vue') },

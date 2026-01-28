@@ -8,7 +8,7 @@
           <span class="text-sm">نقص المخزون فقط</span>
         </label>
       </div>
-      <router-link to="/inventory/create" class="btn btn-primary">إضافة خامة</router-link>
+      <router-link to="/dashboard/inventory/create" class="btn btn-primary">إضافة خامة</router-link>
     </div>
 
     <div class="card">

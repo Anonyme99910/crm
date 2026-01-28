@@ -127,7 +127,7 @@
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-1">العملة</label>
               <select v-model="form.currency" required class="input-field">
-                <option value="SAR">ريال سعودي</option>
+                <option value="EGP">جنيه مصري</option>
                 <option value="USD">دولار أمريكي</option>
                 <option value="EUR">يورو</option>
               </select>
@@ -208,7 +208,7 @@ const form = ref({
   bank_name: '',
   account_number: '',
   account_type: 'checking',
-  currency: 'SAR',
+  currency: 'EGP',
   opening_balance: 0,
   minimum_balance: 0,
   branch: '',
@@ -285,12 +285,12 @@ const viewAccount = (account) => {
 const resetForm = () => {
   form.value = {
     account_name: '', bank_name: '', account_number: '', account_type: 'checking',
-    currency: 'SAR', opening_balance: 0, minimum_balance: 0, branch: '', is_active: true, is_default: false,
+    currency: 'EGP', opening_balance: 0, minimum_balance: 0, branch: '', is_active: true, is_default: false,
   };
 };
 
 const formatCurrency = (amount) => {
-  return new Intl.NumberFormat('ar-SA', { style: 'currency', currency: 'SAR' }).format(amount || 0);
+  return new Intl.NumberFormat('ar-EG', { style: 'currency', currency: 'EGP' }).format(amount || 0);
 };
 
 const getTypeLabel = (type) => {

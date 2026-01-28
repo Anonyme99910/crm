@@ -8,7 +8,7 @@
         <option value="active">نشط</option>
         <option value="completed">مكتمل</option>
       </select>
-      <router-link to="/contracts/create" class="btn btn-primary">إنشاء عقد</router-link>
+      <router-link to="/dashboard/contracts/create" class="btn btn-primary">إنشاء عقد</router-link>
     </div>
 
     <div class="card">
@@ -24,7 +24,7 @@
               <td>{{ c.project?.name }}</td>
               <td>{{ formatCurrency(c.total_value) }}</td>
               <td><span :class="statusClass(c.status)" class="badge">{{ statusLabel(c.status) }}</span></td>
-              <td><router-link :to="`/contracts/${c.id}`" class="text-primary-600">عرض</router-link></td>
+              <td><router-link :to="`/dashboard/contracts/${c.id}`" class="text-primary-600">عرض</router-link></td>
             </tr>
           </tbody>
         </table>

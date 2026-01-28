@@ -7,7 +7,7 @@
       </div>
       <div class="flex items-center gap-3">
         <span :class="statusClass(quotation.status)" class="badge text-base px-4 py-2">{{ statusLabel(quotation.status) }}</span>
-        <router-link :to="`/quotations/${quotation.id}/edit`" class="btn btn-secondary">تعديل</router-link>
+        <router-link :to="`/dashboard/quotations/${quotation.id}/edit`" class="btn btn-secondary">تعديل</router-link>
         <button @click="generatePdf" class="btn btn-primary">تحميل PDF</button>
       </div>
     </div>
@@ -70,7 +70,7 @@
             <button v-if="quotation.status === 'sent' || quotation.status === 'viewed'" @click="updateStatus('accepted')" class="btn btn-success w-full">تحديد كمقبول</button>
             <button v-if="quotation.status === 'sent' || quotation.status === 'viewed'" @click="updateStatus('rejected')" class="btn btn-danger w-full">تحديد كمرفوض</button>
             <button @click="duplicateQuotation" class="btn btn-secondary w-full">نسخ العرض</button>
-            <router-link v-if="quotation.status === 'accepted'" :to="`/projects/create?quotation_id=${quotation.id}&lead_id=${quotation.lead_id}`" class="btn btn-primary w-full block text-center">إنشاء مشروع</router-link>
+            <router-link v-if="quotation.status === 'accepted'" :to="`/dashboard/projects/create?quotation_id=${quotation.id}&lead_id=${quotation.lead_id}`" class="btn btn-primary w-full block text-center">إنشاء مشروع</router-link>
           </div>
         </div>
 
@@ -118,7 +118,7 @@ const generatePdf = async () => {
 
 const duplicateQuotation = async () => {
   const { data } = await axios.post(`/quotations/${quotation.value.id}/duplicate`);
-  router.push(`/quotations/${data.data.id}/edit`);
+  router.push(`/dashboard/quotations/${data.data.id}/edit`);
 };
 
 const formatDate = (d) => dayjs(d).format('YYYY/MM/DD');

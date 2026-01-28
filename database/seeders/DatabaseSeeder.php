@@ -140,5 +140,8 @@ class DatabaseSeeder extends Seeder
         Setting::set('company_address', 'القاهرة - مصر', 'general');
         Setting::set('tax_rate', '14', 'finance', 'float');
         Setting::set('currency', 'EGP', 'finance');
+
+        // Run Mock Data Seeder
+        $this->call(MockDataSeeder::class);
     }
 }

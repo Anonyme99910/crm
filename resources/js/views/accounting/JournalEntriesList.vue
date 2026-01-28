@@ -342,8 +342,8 @@ const resetForm = () => {
   };
 };
 
-const formatCurrency = (amount) => new Intl.NumberFormat('ar-SA', { style: 'currency', currency: 'SAR' }).format(amount || 0);
-const formatDate = (date) => date ? new Date(date).toLocaleDateString('ar-SA') : '';
+const formatCurrency = (amount) => new Intl.NumberFormat('ar-EG', { style: 'currency', currency: 'EGP' }).format(amount || 0);
+const formatDate = (date) => date ? new Date(date).toLocaleDateString('ar-EG') : '';
 
 const getStatusLabel = (status) => {
   const labels = { draft: 'مسودة', posted: 'مرحل', reversed: 'معكوس' };

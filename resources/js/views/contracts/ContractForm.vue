@@ -19,7 +19,7 @@
         <div><label class="form-label">الشروط والأحكام</label><textarea v-model="form.terms_conditions" class="form-input" rows="3"></textarea></div>
         <div class="flex gap-4">
           <button type="submit" :disabled="loading" class="btn btn-primary">{{ loading ? 'جاري الحفظ...' : 'حفظ' }}</button>
-          <router-link to="/contracts" class="btn btn-secondary">إلغاء</router-link>
+          <router-link to="/dashboard/contracts" class="btn btn-secondary">إلغاء</router-link>
         </div>
       </form>
     </div>
@@ -45,7 +45,7 @@ const handleSubmit = async () => {
   loading.value = true;
   try {
     await axios.post('/contracts', form);
-    router.push('/contracts');
+    router.push('/dashboard/contracts');
   } catch (error) {
     alert(error.response?.data?.message || 'حدث خطأ');
   } finally {

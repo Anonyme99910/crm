@@ -206,8 +206,8 @@ const resetForm = () => {
   form.value = { from_account_id: '', to_account_id: '', amount: 0, transfer_date: new Date().toISOString().split('T')[0], purpose: '', notes: '' };
 };
 
-const formatCurrency = (amount) => new Intl.NumberFormat('ar-SA', { style: 'currency', currency: 'SAR' }).format(amount || 0);
-const formatDate = (date) => new Date(date).toLocaleDateString('ar-SA');
+const formatCurrency = (amount) => new Intl.NumberFormat('ar-EG', { style: 'currency', currency: 'EGP' }).format(amount || 0);
+const formatDate = (date) => new Date(date).toLocaleDateString('ar-EG');
 
 const getStatusLabel = (status) => {
   const labels = { pending: 'معلق', approved: 'معتمد', completed: 'مكتمل', rejected: 'مرفوض', cancelled: 'ملغي' };

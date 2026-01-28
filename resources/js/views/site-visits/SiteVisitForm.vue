@@ -35,7 +35,7 @@
         </div>
         <div class="flex gap-4">
           <button type="submit" :disabled="loading" class="btn btn-primary">{{ loading ? 'جاري الحفظ...' : 'حفظ' }}</button>
-          <router-link to="/site-visits" class="btn btn-secondary">إلغاء</router-link>
+          <router-link to="/dashboard/site-visits" class="btn btn-secondary">إلغاء</router-link>
         </div>
       </form>
     </div>
@@ -75,7 +75,7 @@ const handleSubmit = async () => {
   loading.value = true;
   try {
     await axios.post('/site-visits', form);
-    router.push('/site-visits');
+    router.push('/dashboard/site-visits');
   } catch (error) {
     alert(error.response?.data?.message || 'حدث خطأ');
   } finally {

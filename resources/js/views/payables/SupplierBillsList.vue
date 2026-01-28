@@ -410,8 +410,8 @@ const resetForm = () => {
 
 const isOverdue = (bill) => bill.balance > 0 && new Date(bill.due_date) < new Date();
 
-const formatCurrency = (amount) => new Intl.NumberFormat('ar-SA', { style: 'currency', currency: 'SAR' }).format(amount || 0);
-const formatDate = (date) => date ? new Date(date).toLocaleDateString('ar-SA') : '';
+const formatCurrency = (amount) => new Intl.NumberFormat('ar-EG', { style: 'currency', currency: 'EGP' }).format(amount || 0);
+const formatDate = (date) => date ? new Date(date).toLocaleDateString('ar-EG') : '';
 
 const getStatusLabel = (status) => {
   const labels = { draft: 'مسودة', pending_approval: 'بانتظار الاعتماد', approved: 'معتمد', partially_paid: 'مدفوع جزئياً', paid: 'مدفوع', cancelled: 'ملغي' };

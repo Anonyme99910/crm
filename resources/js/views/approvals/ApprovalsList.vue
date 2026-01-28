@@ -388,8 +388,8 @@ const closeWorkflowForm = () => {
   };
 };
 
-const formatCurrency = (amount) => new Intl.NumberFormat('ar-SA', { style: 'currency', currency: 'SAR' }).format(amount || 0);
-const formatDate = (date) => date ? new Date(date).toLocaleDateString('ar-SA') : '';
+const formatCurrency = (amount) => new Intl.NumberFormat('ar-EG', { style: 'currency', currency: 'EGP' }).format(amount || 0);
+const formatDate = (date) => date ? new Date(date).toLocaleDateString('ar-EG') : '';
 
 const getTypeLabel = (type) => {
   const labels = { purchase_order: 'أمر شراء', supplier_bill: 'فاتورة مورد', employee_fund: 'عهدة موظف', fund_transfer: 'تحويل بنكي', customer_invoice: 'فاتورة عميل', expense: 'مصروف' };

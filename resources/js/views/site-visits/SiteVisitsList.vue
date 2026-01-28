@@ -10,7 +10,7 @@
         </select>
         <input v-model="filters.date_from" type="date" class="form-input" @change="fetchVisits" />
       </div>
-      <router-link to="/site-visits/create" class="btn btn-primary">جدولة معاينة</router-link>
+      <router-link to="/dashboard/site-visits/create" class="btn btn-primary">جدولة معاينة</router-link>
     </div>
 
     <div class="card">
@@ -34,7 +34,7 @@
               <td>{{ formatDateTime(visit.scheduled_at) }}</td>
               <td><span :class="statusClass(visit.status)" class="badge">{{ statusLabel(visit.status) }}</span></td>
               <td>
-                <router-link :to="`/site-visits/${visit.id}`" class="text-primary-600 hover:text-primary-800">عرض</router-link>
+                <router-link :to="`/dashboard/site-visits/${visit.id}`" class="text-primary-600 hover:text-primary-800">عرض</router-link>
               </td>
             </tr>
           </tbody>

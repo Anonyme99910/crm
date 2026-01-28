@@ -20,7 +20,7 @@
         <div><label class="form-label">العنوان</label><textarea v-model="form.address" class="form-input" rows="2"></textarea></div>
         <div class="flex gap-4">
           <button type="submit" :disabled="loading" class="btn btn-primary">{{ loading ? 'جاري الحفظ...' : 'حفظ' }}</button>
-          <router-link to="/suppliers" class="btn btn-secondary">إلغاء</router-link>
+          <router-link to="/dashboard/suppliers" class="btn btn-secondary">إلغاء</router-link>
         </div>
       </form>
     </div>
@@ -40,7 +40,7 @@ const handleSubmit = async () => {
   loading.value = true;
   try {
     await axios.post('/suppliers', form);
-    router.push('/suppliers');
+    router.push('/dashboard/suppliers');
   } catch (error) {
     alert(error.response?.data?.message || 'حدث خطأ');
   } finally {

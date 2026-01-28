@@ -16,11 +16,11 @@
           <option value="low">منخفض</option>
         </select>
       </div>
-      <router-link to="/tasks/create" class="btn btn-primary">إضافة مهمة</router-link>
+      <router-link to="/dashboard/tasks/create" class="btn btn-primary">إضافة مهمة</router-link>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div v-for="task in tasks" :key="task.id" class="card hover:shadow-md transition-shadow cursor-pointer" @click="$router.push(`/tasks/${task.id}`)">
+      <div v-for="task in tasks" :key="task.id" class="card hover:shadow-md transition-shadow cursor-pointer" @click="$router.push(`/dashboard/tasks/${task.id}`)">
         <div class="card-body">
           <div class="flex items-start justify-between mb-3">
             <div>

@@ -10,8 +10,8 @@
         </select>
       </div>
       <div class="flex gap-3">
-        <router-link to="/purchase-orders" class="btn btn-secondary">أوامر الشراء</router-link>
-        <router-link to="/suppliers/create" class="btn btn-primary">إضافة مورد</router-link>
+        <router-link to="/dashboard/purchase-orders" class="btn btn-secondary">أوامر الشراء</router-link>
+        <router-link to="/dashboard/suppliers/create" class="btn btn-primary">إضافة مورد</router-link>
       </div>
     </div>
 
@@ -33,7 +33,7 @@
                   <span>{{ s.rating || 0 }}</span>
                 </div>
               </td>
-              <td><router-link :to="`/suppliers/${s.id}`" class="text-primary-600">عرض</router-link></td>
+              <td><router-link :to="`/dashboard/suppliers/${s.id}`" class="text-primary-600">عرض</router-link></td>
             </tr>
           </tbody>
         </table>

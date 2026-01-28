@@ -316,31 +316,163 @@ const loadReport = async () => {
 
 const printReport = () => {
   const content = document.getElementById('report-content').innerHTML;
+  const reportTitle = tabs.find(t => t.id === activeTab.value)?.name || 'تقرير مالي';
   const printWindow = window.open('', '_blank');
   printWindow.document.write(`
-    <html dir="rtl">
+    <!DOCTYPE html>
+    <html lang="ar" dir="rtl">
       <head>
-        <title>تقرير مالي</title>
+        <meta charset="UTF-8">
+        <title>${reportTitle}</title>
         <style>
-          body { font-family: Arial, sans-serif; padding: 20px; }
-          table { width: 100%; border-collapse: collapse; }
-          th, td { border: 1px solid #ddd; padding: 8px; text-align: right; }
-          th { background-color: #f5f5f5; }
+          @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+          
+          * { box-sizing: border-box; margin: 0; padding: 0; }
+          
+          body { 
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+            padding: 40px;
+            background: #fff;
+            color: #1f2937;
+            direction: rtl;
+            line-height: 1.6;
+          }
+          
+          .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #d4af37;
+          }
+          
+          .header h1 {
+            font-size: 28px;
+            color: #1f2937;
+            margin-bottom: 10px;
+          }
+          
+          .header .company-name {
+            font-size: 18px;
+            color: #d4af37;
+            font-weight: 600;
+          }
+          
+          .header .date-range {
+            font-size: 14px;
+            color: #6b7280;
+            margin-top: 10px;
+          }
+          
+          table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: 20px 0;
+          }
+          
+          th, td { 
+            border: 1px solid #e5e7eb; 
+            padding: 12px 16px; 
+            text-align: right; 
+          }
+          
+          th { 
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            font-weight: 600;
+            color: #374151;
+          }
+          
+          tr:nth-child(even) { background-color: #f9fafb; }
+          tr:hover { background-color: #f3f4f6; }
+          
+          .section {
+            margin: 25px 0;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+          }
+          
+          .section-green { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color: #86efac; }
+          .section-red { background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border-color: #fca5a5; }
+          .section-blue { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-color: #93c5fd; }
+          .section-purple { background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%); border-color: #d8b4fe; }
+          
+          .section h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid currentColor;
+          }
+          
+          .section-green h3 { color: #166534; border-color: #22c55e; }
+          .section-red h3 { color: #991b1b; border-color: #ef4444; }
+          .section-blue h3 { color: #1e40af; border-color: #3b82f6; }
+          .section-purple h3 { color: #6b21a8; border-color: #a855f7; }
+          
+          .row { display: flex; justify-content: space-between; padding: 8px 0; }
+          .row-total { border-top: 2px solid currentColor; margin-top: 10px; padding-top: 10px; font-weight: 700; }
+          
           .text-green-600 { color: #16a34a; }
           .text-red-600 { color: #dc2626; }
           .text-blue-600 { color: #2563eb; }
-          .font-bold { font-weight: bold; }
-          .font-mono { font-family: monospace; }
+          .text-purple-600 { color: #9333ea; }
+          
+          .font-bold { font-weight: 700; }
+          .font-mono { font-family: 'Courier New', monospace; direction: ltr; display: inline-block; }
+          
+          .text-center { text-align: center; }
+          .text-xl { font-size: 20px; }
+          .text-lg { font-size: 18px; }
+          .text-sm { font-size: 14px; }
+          
+          .grid { display: grid; gap: 20px; }
+          .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+          .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+          
+          .stat-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+          }
+          
+          .stat-card .value { font-size: 24px; font-weight: 700; }
+          .stat-card .label { font-size: 12px; color: #6b7280; margin-top: 5px; }
+          
+          .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            font-size: 12px;
+            color: #9ca3af;
+          }
+          
+          @media print {
+            body { padding: 20px; }
+            .section { break-inside: avoid; }
+          }
         </style>
       </head>
-      <body>${content}</body>
+      <body>
+        <div class="header">
+          <div class="company-name">حازم عبدالله للتشطيبات</div>
+          <h1>${reportTitle}</h1>
+          <div class="date-range">للفترة من ${filters.value.from_date} إلى ${filters.value.to_date}</div>
+        </div>
+        ${content}
+        <div class="footer">
+          تم إنشاء هذا التقرير بتاريخ ${new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </div>
+      </body>
     </html>
   `);
   printWindow.document.close();
-  printWindow.print();
+  setTimeout(() => printWindow.print(), 500);
 };
 
-const formatCurrency = (amount) => new Intl.NumberFormat('ar-SA', { style: 'currency', currency: 'SAR' }).format(amount || 0);
+const formatCurrency = (amount) => new Intl.NumberFormat('ar-EG', { style: 'currency', currency: 'EGP' }).format(amount || 0);
 
 watch(activeTab, loadReport);
 onMounted(loadReport);
